@@ -92,7 +92,7 @@ export default function MyPage() {
 
         <div 
           style={{
-            width: 400, 
+            width: 360, 
             height: 75, 
             background: '#f8f8f8', 
             boxShadow: '2px 3px 4px rgba(158, 153, 153, 0.4)', 
