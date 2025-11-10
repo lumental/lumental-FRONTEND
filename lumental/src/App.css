@@ -31,6 +31,15 @@
   .bottom-nav   { max-width: 430px; }
 }
 
+@media (min-width: 431px) {
+  .app-container {
+    max-width:430px;
+  }
+  .bottom-nav {
+    max-width:430px;
+  }
+}
+
 /* 네비바 (프레임 내부 sticky) */
 .bottom-nav {
   position: sticky;      /* 프레임(app-container) 안에서 하단 고정 */

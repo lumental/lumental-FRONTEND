@@ -56,7 +56,7 @@ export default function MyPage() {
       <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 30 }}>
         <div 
           style={{
-            width: 400, 
+            width: 360, 
             height: 300, 
             background: 'linear-gradient(0deg, rgba(255, 233, 158, 0.40) 13%, #FFE99E 100%)', 
             borderRadius: 20,

@@ -30,7 +30,7 @@ export default function Home() {
       }}
     >
       <section style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <h1 style={{ margin: 0, fontSize: 30, padding: 0, paddingLeft: 20 }}>안녕, "닉네임"!</h1>
+        <h1 style={{ margin: 0, fontSize: 30, padding: 0, paddingLeft: 20 }}>안녕, 닉네임!</h1>
         <div style={{
             margin:0, padding: 0, 
             color: '#FFAC19', 
@@ -53,7 +53,7 @@ export default function Home() {
         >
           <div
             style={{
-              width: 400,
+              width: 360,
               height: 360,
               background: 'linear-gradient(180deg, #010710 0%, #468AF0 100%)',
               borderRadius: 28,
@@ -144,7 +144,7 @@ export default function Home() {
               >
                 <div
                   style={{
-                    width: '190px',
+                    width: '170px',
                     height: '102px',
                     background: 'white',
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
@@ -155,7 +155,7 @@ export default function Home() {
 
                 <div
                   style={{
-                    width: '190px',
+                    width: '170px',
                     height: '102px',
                     background: 'white',
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
@@ -168,7 +168,7 @@ export default function Home() {
               
               <div
                 style={{
-                  width: '190px',
+                  width: '170px',
                   height: '220px',
                   background: 'white',
                   borderRadius: '21.92px',

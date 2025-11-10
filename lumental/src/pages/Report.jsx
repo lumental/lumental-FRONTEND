@@ -72,7 +72,7 @@ export default function Report() {
       >
         <div
           style={{
-            width: 400,
+            width: 360,
             height: 240,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(255, 104, 84, 0.30)',
@@ -84,7 +84,7 @@ export default function Report() {
 
         <div
           style={{
-            width: 400,
+            width: 360,
             height: 240,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(255, 104, 84, 0.30)',
@@ -96,7 +96,7 @@ export default function Report() {
 
         <div
           style={{
-            width: 400,
+            width: 360,
             height: 360,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(95, 103, 255, 0.30)',
@@ -108,7 +108,7 @@ export default function Report() {
 
         <div
           style={{
-            width: 400,
+            width: 360,
             height: 240,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(255, 178, 41, 0.30)',
@@ -120,7 +120,7 @@ export default function Report() {
 
         <div
           style={{
-            width: 400,
+            width: 360,
             height: 120,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(87, 154, 255, 0.40)',
@@ -132,7 +132,7 @@ export default function Report() {
 
         <div
           style={{
-            width: 400,
+            width: 360,
             height: 120,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(178, 251, 162, 0.40)',
