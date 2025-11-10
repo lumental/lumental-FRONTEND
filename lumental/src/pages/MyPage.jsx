@@ -109,7 +109,7 @@ export default function MyPage() {
           <button style={{background: 'none', border: 'none', cursor: 'pointer', margin: 0, padding: '0 30px', }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.96)'}
             onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}> 
             <FontAwesomeIcon icon={faFile} color='#767676' style={{ fontSize: "22px" }} />
-            <br /><span style={{display: 'inline-block', color: '#767676', fontSize: 12, fontFamily: 'Pretendard', fontWeight: '500', wordWrap: 'break-word', paddingTop: 5}}>공지사항</span>
+            <br /><span style={{display: 'inline-block', color: '#767676', fontSize: 10, fontFamily: 'Pretendard', fontWeight: '500', wordWrap: 'break-word', paddingTop: 5}}>공지사항</span>
           </button>
 
           <div style={{margin: '0 8px', backgroundColor: '#c9c5c5ff', width: 1,height: 35,}}></div>
@@ -117,7 +117,7 @@ export default function MyPage() {
           <button style={{background: 'none', border: 'none', cursor: 'pointer', margin: 0, padding: '0 30px',}} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.96)'}
             onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
             <FontAwesomeIcon icon={faHeadphones} color='#767676' style={{ fontSize: "22px" }} />
-            <br /> <span style={{display: 'inline-block', color: '#767676', fontSize: 12, fontFamily: 'Pretendard', fontWeight: '500', wordWrap: 'break-word', paddingTop: 5}}>고객센터</span>
+            <br /> <span style={{display: 'inline-block', color: '#767676', fontSize: 10, fontFamily: 'Pretendard', fontWeight: '500', wordWrap: 'break-word', paddingTop: 5}}>고객센터</span>
           </button>
 
           <div style={{margin: '0 8px', backgroundColor: '#c9c5c5ff', width: 1,height: 35,}}></div>
@@ -125,7 +125,7 @@ export default function MyPage() {
           <button style={{background: 'none', border: 'none', cursor: 'pointer', margin: 0, padding: '0 30px',}} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.96)'}
             onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}>
             <FontAwesomeIcon icon={faCircleInfo} color='#767676' style={{ fontSize: "22px" }} />
-            <br /><span style={{display: 'inline-block', color: '#767676', fontSize: 12, fontFamily: 'Pretendard', fontWeight: '500', wordWrap: 'break-word', paddingTop: 5}}>서비스 소개</span>
+            <br /><span style={{display: 'inline-block', color: '#767676', fontSize: 10, fontFamily: 'Pretendard', fontWeight: '500', wordWrap: 'break-word', paddingTop: 5}}>서비스 소개</span>
           </button>
 
         </div>
