@@ -4,7 +4,8 @@ import {
   faFaceSmile,
   faFaceMeh,
   faFaceFrown,
-  faFaceSadTear
+  faFaceSadTear,
+  faFaceSmileWink
 } from '@fortawesome/free-regular-svg-icons';
 
 export default function EmotionButtons() {
@@ -13,6 +14,7 @@ export default function EmotionButtons() {
     { label: '짜증남', icon: faFaceFrown },
     { label: '그럭저럭', icon: faFaceMeh },
     { label: '지쳤음', icon: faFaceSadTear },
+    { label: '기대됨', icon: faFaceSmileWink}
   ];
 
   const [selected, setSelected] = useState(null);
