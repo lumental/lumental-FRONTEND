@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import BottomNav from './components/BottomNav';
+import Home from './pages/Home';
+import AIChat from './pages/AIChat';
+import Report from './pages/Report';
+import CheckList from './pages/CheckList';
+import MyPage from './pages/MyPage';
 import './App.css'
+import './layouts/AppLayout.jsx'
+import Register from './pages/Register.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
+
+export default function App() {
+  const location = useLocation();
+  const hideNavOn = []; 
+
+  const showBottomNav = !hideNavOn.includes(location.pathname);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-shell" style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
+      
+      <div style={{ flex: 1 }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/aichat" element={<AIChat />} />
+          <Route path="/report" element={<Report />} />
+          <Route path="/checklist" element={<CheckList />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/Register" element={<Register />} />
+          {/* 잘못된 경로 -> 메인으로 */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      
+
+      {showBottomNav && <BottomNav />}
+      
+    </div>
+    
+  );
 }
 
-export default App

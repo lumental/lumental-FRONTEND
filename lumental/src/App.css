@@ -1,0 +1,131 @@
+.app-viewport {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: #f6f7f9;
+}
+
+/* 430px 폰 프레임 */
+.app-container {
+  width: 100%;
+  max-width: 430px;        /* 핵심 */
+  min-height: 100dvh;      /* sticky 기준 컨테이너 */
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* 스크롤 영역(콘텐츠); 바텀탭 높이만큼 하단 패딩 */
+.app-content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 16px 88px;
+}
+
+/* 반응형(큰 화면에서만 430 제한을 명시적으로 보장하고 싶다면 유지) */
+@media (min-width: 431px) {
+  .app-container { max-width: 430px; }
+  .bottom-nav   { max-width: 430px; }
+}
+
+/* 네비바 (프레임 내부 sticky) */
+.bottom-nav {
+  position: sticky;      /* 프레임(app-container) 안에서 하단 고정 */
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #eee;
+  height: 64px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  gap: 4px;
+  padding: 6px 4px env(safe-area-inset-bottom);
+  z-index: 10;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.bottom-nav {
+  position: fixed;        
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  max-width: 430px;       
+  right: auto;            
+  margin: 0;              
+  z-index: 1000;          
+}
+
+.app-content { 
+  padding-bottom: 88px;   
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #666;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.emotion-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.emotion-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.emotion-btn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid #E8E8E8;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.emotion-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.emotion-btn.active {
+  background: #FFE99E;
+  border: 1px solid #FFD54F;
+  font-weight: 600;
+}
+
+.CheckBox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c4c4c4;
+  background-color: #c4c4c4;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.CheckBox:checked {
+  background: url("assets/체크박스2.png") no-repeat center / 100%;
+  border: 2px solid #FFAC1A;
+  background-color: #FFAC1A;
+}
