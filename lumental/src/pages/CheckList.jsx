@@ -92,7 +92,8 @@ export default function CheckList() {
                 className="CheckBox"
               />
               
-              <textarea
+              <input
+                type="text"
                 name="checklist1"
                 value={input.checklist1}
                 onChange={onChange}
@@ -107,7 +108,8 @@ export default function CheckList() {
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
-              <textarea
+              <input
+                type="text"
                 name="checklist2"
                 value={input.checklist2}
                 onChange={onChange}
@@ -122,7 +124,8 @@ export default function CheckList() {
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
-              <textarea
+              <input
+                type="text"
                 name="checklist3"
                 value={input.checklist3}
                 onChange={onChange}
@@ -137,7 +140,8 @@ export default function CheckList() {
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
-              <textarea
+              <input
+                type="text"
                 name="checklist4"
                 value={input.checklist4}
                 onChange={onChange}
@@ -152,7 +156,8 @@ export default function CheckList() {
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
-              <textarea
+              <input
+                type="text"
                 name="checklist5"
                 value={input.checklist5}
                 onChange={onChange}
