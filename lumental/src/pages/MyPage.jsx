@@ -41,7 +41,7 @@ export default function MyPage() {
             border: 'none',       
             outline: 'none',      
             background: 'white',
-            paddingTop: 10,
+            //paddingTop: 10,
             paddingLeft: 150,
             width: 40,
             height: 40,

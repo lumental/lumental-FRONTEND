@@ -30,7 +30,7 @@ export default function Home() {
       }}
     >
       <section style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <h1 style={{ margin: 0, fontSize: 30, padding: 0, paddingLeft: 20 }}>안녕, 닉네임!</h1>
+        <h1 style={{ margin: 0, fontSize: 30, padding: 0, /*paddingLeft: 20*/ }}>안녕, 닉네임!</h1>
         <div style={{
             margin:0, padding: 0, 
             color: '#FFAC19', 
@@ -38,7 +38,8 @@ export default function Home() {
             fontFamily: 'Pretendard', 
             fontWeight: '600', 
             wordWrap: 'break-word',
-            paddingLeft: 20}}>
+            //paddingLeft: 20
+            }}>
             오늘 기분은 어때?
         </div>
 
@@ -53,7 +54,7 @@ export default function Home() {
         >
           <div
             style={{
-              width: 360,
+              width: '100%',
               height: 360,
               background: 'linear-gradient(180deg, #010710 0%, #468AF0 100%)',
               borderRadius: 28,
@@ -115,7 +116,7 @@ export default function Home() {
             fontFamily: 'Pretendard', 
             fontWeight: '700', 
             wordWrap: 'break-word', 
-            marginLeft: 30
+            //marginLeft: 30
             }}>오늘의 하루
           </p>
 
@@ -124,6 +125,8 @@ export default function Home() {
               display: 'flex',
               justifyContent: 'center',
               marginTop: '16px',
+              alignItems: 'center',
+              width: '100%'
             }}
           >
             <div
@@ -131,6 +134,7 @@ export default function Home() {
                 display: 'flex',
                 flexDirection: 'row',
                 gap: '20px', 
+                width: '100%'
               }}
             >
               
@@ -140,11 +144,13 @@ export default function Home() {
                   flexDirection: 'column',
                   justifyContent: 'space-between', 
                   gap: '14px',
+                  width: '40%',
                 }}
               >
                 <div
                   style={{
-                    width: '170px',
+                    //width: '170px',
+                    width: '100%',
                     height: '102px',
                     background: 'white',
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
@@ -155,7 +161,8 @@ export default function Home() {
 
                 <div
                   style={{
-                    width: '170px',
+                    //width: '170px',
+                    width: '100%',
                     height: '102px',
                     background: 'white',
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
@@ -168,7 +175,8 @@ export default function Home() {
               
               <div
                 style={{
-                  width: '170px',
+                  //width: '170px',
+                  width: '40%',
                   height: '220px',
                   background: 'white',
                   borderRadius: '21.92px',
