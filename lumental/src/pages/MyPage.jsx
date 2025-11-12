@@ -42,7 +42,7 @@ export default function MyPage() {
             outline: 'none',      
             background: 'white',
             paddingTop: 10,
-            paddingLeft: 250,
+            paddingLeft: 150,
             width: 40,
             height: 40,
             cursor: 'pointer',
