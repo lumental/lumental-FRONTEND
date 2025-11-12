@@ -9,13 +9,13 @@ export default function Report() {
           fontFamily: 'Pretendard',
           fontWeight: 700,
           color: '#000',
-          paddingLeft: 20
+          //paddingLeft: 20
         }}
       >
         REPORT
       </h1>
 
-      <div style={{marginTop: 15, marginBottom: 15, width: 50, height: 2, backgroundColor: 'black', marginLeft: 20 }}></div>
+      <div style={{marginTop: 15, marginBottom: 15, width: 50, height: 2, backgroundColor: 'black', /*marginLeft: 20*/ }}></div>
 
       <div
         style={{
