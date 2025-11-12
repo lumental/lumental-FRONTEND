@@ -134,7 +134,9 @@ export default function Home() {
                 display: 'flex',
                 flexDirection: 'row',
                 gap: '20px', 
-                width: '100%'
+                width: '100%',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
               
@@ -144,7 +146,7 @@ export default function Home() {
                   flexDirection: 'column',
                   justifyContent: 'space-between', 
                   gap: '14px',
-                  width: '40%',
+                  width: '45%',
                 }}
               >
                 <div
@@ -176,7 +178,7 @@ export default function Home() {
               <div
                 style={{
                   //width: '170px',
-                  width: '40%',
+                  width: '45%',
                   height: '220px',
                   background: 'white',
                   borderRadius: '21.92px',
