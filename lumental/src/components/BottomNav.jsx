@@ -8,7 +8,7 @@ export default function BottomNav() {
   return (
     <nav className="bottom-nav">
 
-      <NavLink to="/">
+      <NavLink to="/home">
       <FontAwesomeIcon icon={faHouse} style={{ fontSize: "22px" }} />
       </NavLink>
 

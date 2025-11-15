@@ -26,6 +26,7 @@ export default function EmotionButtons() {
           key={index}
           className={`emotion-btn ${selected === emotion.label ? 'active' : ''}`}
           onClick={() => setSelected(emotion.label)}
+          style={{marginTop: 0, paddingTop: 0}}
         >
           <FontAwesomeIcon
             icon={emotion.icon}

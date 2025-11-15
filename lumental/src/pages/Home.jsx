@@ -39,6 +39,8 @@ export default function Home() {
             fontWeight: '600', 
             wordWrap: 'break-word',
             //paddingLeft: 20
+            marginBottom: 0,
+            paddingBottom: 0
             }}>
             오늘 기분은 어때?
         </div>

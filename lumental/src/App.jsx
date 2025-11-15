@@ -8,7 +8,8 @@ import MyPage from './pages/MyPage';
 import './App.css'
 import './layouts/AppLayout.jsx'
 import Register from './pages/Register.jsx';
-
+import OnboardingFlow from './onboardings/OnBoardingFlow.jsx';
+import OnboardingReport from './onboardings/onboarding__report2.jsx';
 
 export default function App() {
   const location = useLocation();
@@ -21,14 +22,16 @@ export default function App() {
       
       <div style={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<OnboardingFlow />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/aichat" element={<AIChat />} />
           <Route path="/report" element={<Report />} />
           <Route path="/checklist" element={<CheckList />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/Register" element={<Register />} />
+          
           {/* 잘못된 경로 -> 메인으로 */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </div>
       

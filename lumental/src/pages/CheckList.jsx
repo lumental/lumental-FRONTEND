@@ -83,7 +83,7 @@ export default function CheckList() {
 
           <div style={{width: 320, height: 270, background: '#f8f8f8', borderRadius: 18}}>
             <p style={{color: 'black', fontSize: 18, fontFamily: 'Pretendard', fontWeight: '700', wordWrap: 'break-word', marginLeft: 20}}>오늘의 도전</p>
-            <div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: 10}}>
               <input 
                 type="checkbox"
                 name="checkbox1"
@@ -97,10 +97,11 @@ export default function CheckList() {
                 name="checklist1"
                 value={input.checklist1}
                 onChange={onChange}
+                style={{width: 250}}
               />
             </div>
             
-            <div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: 10}}>
               <input 
                 type="checkbox"
                 name="checkbox2"
@@ -113,10 +114,11 @@ export default function CheckList() {
                 name="checklist2"
                 value={input.checklist2}
                 onChange={onChange}
+                style={{width: 250}}
               />
             </div>
             
-            <div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: 10}}>
               <input 
                 type="checkbox"
                 name="checkbox3"
@@ -129,10 +131,11 @@ export default function CheckList() {
                 name="checklist3"
                 value={input.checklist3}
                 onChange={onChange}
+                style={{width: 250}}
               />
             </div>
             
-            <div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: 10}}>
               <input 
                 type="checkbox"
                 name="checkbox4"
@@ -145,10 +148,11 @@ export default function CheckList() {
                 name="checklist4"
                 value={input.checklist4}
                 onChange={onChange}
+                style={{width: 250}}
               />
             </div>
             
-            <div>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: 10}}>
               <input 
                 type="checkbox"
                 name="checkbox5"
@@ -161,6 +165,7 @@ export default function CheckList() {
                 name="checklist5"
                 value={input.checklist5}
                 onChange={onChange}
+                style={{width: 250}}
               />
             </div>
             
