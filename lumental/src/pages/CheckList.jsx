@@ -41,7 +41,6 @@ export default function CheckList() {
         style={{
           margin: 0,                
           fontSize: 30,
-          fontFamily: 'Pretendard',
           fontWeight: 700,
           color: '#000',
           paddingLeft: 20
@@ -54,8 +53,7 @@ export default function CheckList() {
         style={{
             margin:0, padding: 0, 
             color: '#828282', 
-            fontSize: 18, 
-            fontFamily: 'Pretendard', 
+            fontSize: 18,  
             fontWeight: '500', 
             wordWrap: 'break-word',
             paddingLeft: 20,

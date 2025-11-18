@@ -6,7 +6,7 @@ export default function Report() {
         style={{
           margin: 0,                
           fontSize: 30,
-          fontFamily: 'Pretendard',
+          //fontFamily: 'Pretendard',
           fontWeight: 700,
           color: '#000',
           //paddingLeft: 20
@@ -29,7 +29,7 @@ export default function Report() {
           style={{
             color: 'black',
             fontSize: 23.14,
-            fontFamily: 'Pretendard',
+            //fontFamily: 'Pretendard',
             fontWeight: 700,
             wordWrap: 'break-word',
           }}
@@ -40,7 +40,7 @@ export default function Report() {
           style={{
             color: '#468AF0',
             fontSize: 23.14,
-            fontFamily: 'Pretendard',
+            //fontFamily: 'Pretendard',
             fontWeight: 800,
             wordWrap: 'break-word',
           }}
@@ -51,7 +51,7 @@ export default function Report() {
           style={{
             color: 'black',
             fontSize: 23.14,
-            fontFamily: 'Pretendard',
+            //fontFamily: 'Pretendard',
             fontWeight: 700,
             wordWrap: 'break-word',
           }}

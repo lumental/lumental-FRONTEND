@@ -35,7 +35,7 @@ export default function Home() {
             margin:0, padding: 0, 
             color: '#FFAC19', 
             fontSize: 18, 
-            fontFamily: 'Pretendard', 
+            //fontFamily: 'Pretendard', 
             fontWeight: '600', 
             wordWrap: 'break-word',
             //paddingLeft: 20
@@ -72,7 +72,7 @@ export default function Home() {
                 alignSelf: 'flex-start',
                 color: 'white',
                 fontSize: 12,
-                fontFamily: 'Pretendard',
+                //fontFamily: 'Pretendard',
                 fontWeight: 500,
                 lineHeight: '15.83px',
                 marginBottom: 8,
@@ -85,7 +85,7 @@ export default function Home() {
                 alignSelf: 'flex-start',
                 color: '#FFE99E',
                 fontSize: 16,
-                fontFamily: 'Pretendard',
+                //fontFamily: 'Pretendard',
                 fontWeight: 500,
                 lineHeight: '21.11px',
                 wordWrap: 'break-word',
@@ -115,7 +115,7 @@ export default function Home() {
           style={{
             color: '#363636', 
             fontSize: 20, 
-            fontFamily: 'Pretendard', 
+            //fontFamily: 'Pretendard', 
             fontWeight: '700', 
             wordWrap: 'break-word', 
             //marginLeft: 30

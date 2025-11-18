@@ -145,3 +145,13 @@
   background: #FFAC19; 
   border-radius: 18px
 }
+
+.onimg{ 
+  width: 100%;
+  height: 700px;
+}
+
+@font-face {
+  font-family: 'pretendard';
+  src: url(./fonts/Pretendard-Regular.otf);
+}
