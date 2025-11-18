@@ -43,7 +43,7 @@ export default function CheckList() {
           fontSize: 30,
           fontWeight: 700,
           color: '#000',
-          paddingLeft: 20
+          //paddingLeft: 20
         }}
       >
           SOLUTION
@@ -56,7 +56,7 @@ export default function CheckList() {
             fontSize: 18,  
             fontWeight: '500', 
             wordWrap: 'break-word',
-            paddingLeft: 20,
+            //paddingLeft: 20,
             marginTop: 10,
             marginBottom: 30
         }}
