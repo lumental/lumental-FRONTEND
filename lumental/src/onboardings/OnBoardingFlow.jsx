@@ -1,49 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import OnboardingChat from "./onboarding_aichat1";
-import OnboardingReport from "./onboarding__report2";
-import OnboardingWearable from "./onboarding_wearable7";
-import { Routes, Route, Navigate,  } from 'react-router-dom';
 
-const onboardingPages = [OnboardingChat, OnboardingReport, OnboardingWearable];
-
+// OnboardingChat, Report, Wearable, Routes, Route 임포트 모두 제거
 
 export default function OnboardingFlow() {
-  const [step, setStep] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const hasSeen = localStorage.getItem("hasSeenOnboarding");
     if (hasSeen) {
-      navigate("/home");
+      // 이미 온보딩을 봤다면 홈으로 보냅니다.
+      navigate("/home", { replace: true });
+    } else {
+      // 처음이라면 온보딩 첫 페이지로 보냅니다.
+      navigate("/onboarding_aichat1", { replace: true });
     }
   }, [navigate]);
 
-  const CurrentPage = onboardingPages[step];
-  const handleNext = () => {
-    if (step < onboardingPages.length - 1) {
-      setStep((prev) => prev + 1);
-    } 
-    else {
-      // 마지막 페이지 → 온보딩 완료 처리
-      localStorage.setItem("hasSeenOnboarding", "true");
-      //navigate("/signup"); // 완료 후 회원가입 or 홈으로 이동
-      navigate("/home");
-    }
-  };
-
-
-  return (
-    <main style={{ maxWidth: 430, margin: "0 auto", padding: "20px" }}>
-      <Routes>
-        <Route path="/onboarding_aichat1" element={<OnboardingChat/>} /> 
-        <Route path='/onboarding_report2' element={<OnboardingReport/>} />
-        <Route path='/onboarding_wearable7' element={<OnboardingWearable/>} />
-
-      </Routes>
-      
-      
-    </main>
-  );
+  // 이 컴포넌트는 시각적인 내용을 렌더링할 필요가 없습니다.
+  return null;
 }
