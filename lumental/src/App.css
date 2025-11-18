@@ -155,3 +155,7 @@
   font-family: 'pretendard';
   src: url(../src/fonts/Pretendard-Regular.otf);
 }
+
+* {
+  font-family: 'Pretendard', sans-serif;
+}
