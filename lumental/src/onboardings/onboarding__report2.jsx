@@ -8,7 +8,7 @@ export default function OnboardingReport() {
     const handleFinishOnboarding = () => {
     // 로컬 스토리지에 '봤음' 표시
     localStorage.setItem("hasSeenOnboarding", "true");
-    // 홈으로 이동
+    
     navigate("/onboarding_wearable7");
   };
 

@@ -28,8 +28,8 @@ export default function App() {
       
       <div style={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={<OnboardingFlow />} />
-          <Route path="/onboarding_aichat1" element={<OnboardingChat />} />
+          {/*<Route path="/" element={<OnboardingFlow />} /> */}
+          <Route path="/" element={<OnboardingChat />} />
           <Route path="/onboarding_report2" element={<OnboardingReport />} />
           <Route path="/onboarding_wearable7" element={<OnboardingWearable />} />
 
