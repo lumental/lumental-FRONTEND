@@ -18,6 +18,8 @@ import OnboardingChatlist from './onboardings/onboarding_chatlist4.jsx';
 import OnboardingLogin from './onboardings/onboarding_login5.jsx';
 import OnboardingWearable from './onboardings/onboarding_wearable7'
 import OnboardingCalendar from './onboardings/onboarding_calendar8.jsx';
+import OnboardingCharacter from './onboardings/onboarding_character10.jsx';
+import OnboardingYourname from './onboardings/onboarding_yourname11.jsx';
 
 
 export default function App() {
@@ -45,6 +47,8 @@ export default function App() {
           <Route path="/onboarding_login5" element={<OnboardingLogin />} />
           <Route path="/onboarding_wearable7" element={<OnboardingWearable />} />
           <Route path="/onboarding_calendar8" element={<OnboardingCalendar />} />
+          <Route path="/onboarding_character10" element={<OnboardingCharacter />}/>
+          <Route path="/onboarding_yourname11" element={<OnboardingYourname />}/>
           
 
           <Route path="/home" element={<Home />} />

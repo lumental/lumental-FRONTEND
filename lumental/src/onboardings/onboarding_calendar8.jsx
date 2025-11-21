@@ -8,7 +8,7 @@ export default function OnboardingCalendar() {
     // 로컬 스토리지에 '봤음' 표시
     localStorage.setItem("hasSeenOnboarding", "true");
     // 홈으로 이동
-    navigate("/home");
+    navigate("/onboarding_character10");
   };
 
   return (
