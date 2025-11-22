@@ -196,3 +196,9 @@
 .name::placeholder {
   color:  #F8F8F8; /* placeholder 색 */
 }
+
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
