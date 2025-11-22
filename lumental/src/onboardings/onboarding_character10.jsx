@@ -14,8 +14,18 @@ export default function OnboardingCharacter() {
   };
 
   return (
-    <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',
-    borderRight: '1px solid rgba(0,0,0,0.08)', background: 'linear-gradient(135deg, black 0%, #011635 43%, #468AF0 86%)', height: '100%' }}>
+    <main style={{ 
+      maxWidth: 430, 
+      margin: '0 auto', 
+      padding: '16px 16px 88px', 
+      borderLeft: '1px solid rgba(0,0,0,0.08)',
+      borderRight: '1px solid rgba(0,0,0,0.08)', 
+      background: 'linear-gradient(135deg, black 0%, #011635 43%, #468AF0 86%)', 
+      height: '100dvh', 
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat', 
+      }}
+    >
 
         <div style={{fontSize: 24, color: 'white', marginTop: '15%', marginBottom: '10%'}}><p>이 아이의 이름을 지어주세요</p></div>
 

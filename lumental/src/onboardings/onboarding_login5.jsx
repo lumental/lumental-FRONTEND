@@ -18,8 +18,18 @@ export default function OnboardingLogin() {
   };
 
   return (
-    <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',
-    borderRight: '1px solid rgba(0,0,0,0.08)', background: 'linear-gradient(135deg, black 0%, #011635 43%, #468AF0 86%)'  }}>
+    <main style={{ 
+      maxWidth: 430, 
+      margin: '0 auto', 
+      padding: '16px 16px 88px', 
+      borderLeft: '1px solid rgba(0,0,0,0.08)',
+      borderRight: '1px solid rgba(0,0,0,0.08)', 
+      background: 'linear-gradient(135deg, black 0%, #011635 43%, #468AF0 86%)', 
+      height: '100dvh', 
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat', 
+      }}
+    >
 
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', boxSizing: 'content-box', marginTop: 200, marginBottom: 100}}><img src={loginlogo} alt='로그인 화면' style={{width: 250, height: 260}}></img></div>
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import BottomNav from './components/BottomNav';
 import Home from './pages/Home';
@@ -25,12 +26,22 @@ import OnboardingYourname from './onboardings/onboarding_yourname11.jsx';
 export default function App() {
   const location = useLocation();
   const hideNavOn = [
+    '/',
     '/onboarding_start0',
     '/onboarding_aichat1', 
     '/onboarding_report2',
+    '/onboarding_solution3',
+    '/onboarding_chatlist4',
     '/onboarding_login5', 
-    '/onboarding_wearable7',]; 
+    '/onboarding_wearable7',
+    '/onboarding_calendar8',
+    '/onboarding_character10',
+    '/onboarding_yourname11']; 
 
+  
+
+  const hideNav = location.pathname.startsWith("/onboarding_start0");
+  
   const showBottomNav = !hideNavOn.includes(location.pathname);
 
   return (
