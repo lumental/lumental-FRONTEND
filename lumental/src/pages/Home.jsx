@@ -1,5 +1,6 @@
 
 import EmotionButtons from '../components/EmotionButtons';
+import TodayCards from '../components/TodayCards';
 import flameImg from '../assets/flame.png';
 
 export default function Home() {
