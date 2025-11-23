@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import flame from '../assets/flame.png';
+import { useState } from 'react';
 
 
 
@@ -11,7 +12,14 @@ export default function OnboardingYourname() {
     localStorage.setItem("hasSeenOnboarding", "true");
     
     navigate("/home");
-  };
+    };
+
+    const [name, setName] = useState("");
+
+    const onChange = (e) => {
+      setName(e.target.value)
+      localStorage.setItem("name", e.target.value);
+    };
 
   return (
     <main style={{ 
@@ -35,7 +43,15 @@ export default function OnboardingYourname() {
 
 
         <div className='glass-card' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <input className='name' type='text' placeholder='이름을 입력해주세요.' style={{background: 'none', border: 'none', height: 60, width: '100%'}} />
+            <input 
+              onChange={onChange}
+              value={name}
+              name='name'
+              className='name' 
+              type='text' 
+              placeholder='이름을 입력해주세요.' 
+              style={{background: 'none', border: 'none', height: 60, width: '100%'}} 
+            />
         </div>
 
         <div>

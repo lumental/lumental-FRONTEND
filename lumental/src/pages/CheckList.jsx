@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function CheckList() {
   const [input, setInput] = useState({
@@ -30,7 +30,18 @@ export default function CheckList() {
       ...check,
       [e.target.checked]: e.target.value,
     })
-      }
+      };
+
+  const [character, setCharacter] = useState("");
+  const [name, setName] = useState("");
+  
+  useEffect(() => {
+    const savedCharacter = localStorage.getItem("character");
+    const savedName = localStorage.getItem("name");
+    setCharacter(savedCharacter);
+    setName(savedName);
+  
+    }, []);
 
 
 
@@ -61,13 +72,13 @@ export default function CheckList() {
             marginBottom: 30
         }}
       >
-        name님, 오늘도 character와(과) 함께해요!
+        {name}님, 오늘도 {character}와(과) 함께해요!
       </div>
 
       <div style={{display: 'flex', alignContent: 'center', justifyContent: 'center'}}> 
         <div 
           style={{
-            width: 400, 
+            width: '100%', 
             height: 700, 
             background: 'linear-gradient(180deg, #010710 0%, #468AF0 100%)', 
             borderRadius: 28,

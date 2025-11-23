@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 export default function Report() {
+  
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("name");
+    setName(savedName);
+  });
+
   return (
     <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',  
           borderRight: '1px solid rgba(0,0,0,0.08)',  }}>
@@ -34,7 +44,7 @@ export default function Report() {
             wordWrap: 'break-word',
           }}
         >
-          "NAME"님은{' '}
+          {name} 님은{' '}
         </span>
         <span
           style={{
@@ -45,7 +55,7 @@ export default function Report() {
             wordWrap: 'break-word',
           }}
         >
-          "증상"
+          "증상"{' '} 
         </span>
         <span
           style={{

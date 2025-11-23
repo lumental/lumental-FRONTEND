@@ -2,9 +2,11 @@
 import EmotionButtons from '../components/EmotionButtons';
 import TodayCards from '../components/TodayCards';
 import flameImg from '../assets/flame.png';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-    function MoodCard() {
+  function MoodCard() {
       return (
       <div
         style={{
@@ -18,8 +20,26 @@ export default function Home() {
           boxShadow: '0 12px 24px rgba(0,0,0,0.18)',
         }}
       ></div>
-  );
-}
+      );
+  }
+
+  const [character, setCharacter] = useState("");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const savedCharacter = localStorage.getItem("character");
+    const savedName = localStorage.getItem("name");
+    setCharacter(savedCharacter);
+    setName(savedName);
+
+  }, []);
+
+  const Navigate = useNavigate();
+  const ToChat = () => {
+    Navigate('/aichat');
+  };
+
+
   return (
     <main
       style={{
@@ -31,7 +51,7 @@ export default function Home() {
       }}
     >
       <section style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <h1 style={{ margin: 0, fontSize: 30, padding: 0, /*paddingLeft: 20*/ }}>안녕, 닉네임!</h1>
+        <h1 style={{ margin: 0, fontSize: 30, padding: 0, /*paddingLeft: 20*/ }}>안녕, {name}</h1>
         <div style={{
             margin:0, padding: 0, 
             color: '#FFAC19', 
@@ -79,7 +99,7 @@ export default function Home() {
                 marginBottom: 8,
               }}
             >
-              캐릭터 이름 //연결 필요
+              {character}
             </p>
             <p
               style={{
@@ -94,20 +114,26 @@ export default function Home() {
                 marginTop: 0
               }}
             >
-              캘린더 확인으로 건네는 한마디 
+              오늘 하루는 어땠어? 
             </p> 
+
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <button onClick={ToChat} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
+                <img
+                  src={flameImg}
+                  alt="불꽃캐릭터"
+                  style={{
+                    width: 180,
+                    height: 251,
+                    alignSelf: 'center',
+                    marginTop: 'auto', 
+                    paddingTop: 10
+                  }}
+                />
+              </button>
+            </div>
     
-            <img
-              src={flameImg}
-              alt="불꽃캐릭터"
-              style={{
-                width: 180,
-                height: 251,
-                alignSelf: 'center',
-                marginTop: 'auto', 
-                paddingTop: 10
-              }}
-            />
+            
           </div>
         </div>
 
