@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Stairs from "../components/Stairs";
 
 export default function CheckList() {
   const [input, setInput] = useState({
@@ -88,9 +89,11 @@ export default function CheckList() {
             justifyContent: 'center'
           }}
         >
-          <div style={{width: 320, height: 270, background: '#f8f8f8', borderRadius: 18, marginBottom: 50, }}></div>
+          <div style={{overflow: 'hidden', width: '90%', height: 270, }}>
+            <Stairs/>
+          </div>
 
-          <div style={{width: 320, height: 270, background: '#f8f8f8', borderRadius: 18}}>
+          <div style={{width: '90%', height: 270, background: '#f8f8f8', borderRadius: 18, boxSizing: 'border-box', marginTop: 50}}>
             <p style={{color: 'black', fontSize: 18, fontFamily: 'Pretendard', fontWeight: '700', wordWrap: 'break-word', marginLeft: 20}}>오늘의 도전</p>
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: 10}}>
               <input 
