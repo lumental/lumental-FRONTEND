@@ -29,7 +29,7 @@ export default function CheckList() {
   const onChangeCheck = (e) => {
     setCheck({
       ...check,
-      [e.target.checked]: e.target.value,
+      [e.target.name]: e.target.checked,
     })
       };
 
@@ -91,6 +91,7 @@ export default function CheckList() {
         >
           <div style={{overflow: 'hidden', width: '90%', height: 270, }}>
             <Stairs/>
+            
           </div>
 
           <div style={{width: '90%', height: 270, background: '#f8f8f8', borderRadius: 18, boxSizing: 'border-box', marginTop: 50}}>
@@ -99,7 +100,7 @@ export default function CheckList() {
               <input 
                 type="checkbox"
                 name="checkbox1"
-                value={check.checkbox1}
+                checked={check.checkbox1}
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
@@ -117,7 +118,7 @@ export default function CheckList() {
               <input 
                 type="checkbox"
                 name="checkbox2"
-                value={check.checkbox2}
+                checked={check.checkbox2}
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
@@ -134,7 +135,7 @@ export default function CheckList() {
               <input 
                 type="checkbox"
                 name="checkbox3"
-                value={check.checkbox3}
+                checked={check.checkbox3}
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
@@ -151,7 +152,7 @@ export default function CheckList() {
               <input 
                 type="checkbox"
                 name="checkbox4"
-                value={check.checkbox4}
+                checked={check.checkbox4}
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />
@@ -168,7 +169,7 @@ export default function CheckList() {
               <input 
                 type="checkbox"
                 name="checkbox5"
-                value={check.checkbox5}
+                checked={check.checkbox5}
                 onChange={onChangeCheck} 
                 className="CheckBox"
               />

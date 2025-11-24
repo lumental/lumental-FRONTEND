@@ -4,6 +4,7 @@ import TodayCards from '../components/TodayCards';
 import flameImg from '../assets/flame.png';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Home() {
   function MoodCard() {
@@ -38,6 +39,18 @@ export default function Home() {
   const ToChat = () => {
     Navigate('/aichat');
   };
+
+  
+
+  useEffect(() => {
+    const getData = async () => {
+      const api = import.meta.env.VITE_API_URL;
+      const res = await axios.get(`${api}/test/biometric-report`);
+      console.log(res.data);
+    };
+
+    getData();
+  }, []);
 
 
   return (
@@ -188,7 +201,9 @@ export default function Home() {
                     boxShadow: '0px 0px 10px rgba(255, 104, 84, 0.30)',
                     borderRadius: '23.4px',
                   }}
-                ></div>
+                >
+                  
+                </div>
 
                 <div
                   style={{
