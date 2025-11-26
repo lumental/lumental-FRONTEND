@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Stairs from "../components/Stairs";
+import GaugeBar from "../components/GaugeBar";
 
 export default function CheckList() {
   const [input, setInput] = useState({
@@ -43,6 +44,8 @@ export default function CheckList() {
     setName(savedName);
   
     }, []);
+
+  const isCleared = Object.values(check).every(Boolean);
 
 
 
@@ -90,7 +93,8 @@ export default function CheckList() {
           }}
         >
           <div style={{overflow: 'hidden', width: '90%', height: 270, }}>
-            <Stairs/>
+            <GaugeBar value={0} isCleared={isCleared} />
+            <Stairs isCleared={isCleared} />
             
           </div>
 
