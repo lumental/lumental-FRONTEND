@@ -9,6 +9,7 @@ import Circle from '../charts/Circle';
 import TinyBar from '../charts/Bar';
 import HRVBarChart from '../charts/Bar';
 import dummy from '../charts/dummy.json';
+/* eslint-disable */
 
 export default function Home() {
   function MoodCard() {
@@ -210,7 +211,7 @@ export default function Home() {
                     borderRadius: '23.4px',
                   }}
                 >
-                  <button onClick={getData}></button>
+                  
                 </div>
 
                 <div
@@ -224,11 +225,16 @@ export default function Home() {
                     borderRadius: '23.4px',
 
                     display: 'flex',
-                    alignContent: 'center',
+                    alignItems: 'center',
                     justifyContent: 'center',
+                    flexDirection: 'column'
                   }}
                 >
-                  <HRVBarChart data={data} />
+                  <div style={{ marginBottom: 0, paddingBottom: 0}}>HRV</div>
+                  <div style={{marginLeft: '80px', marginTop: 0, paddingTop: 0}}>
+                    <HRVBarChart data={data} />
+                  </div>
+                  
                 </div>
 
 
@@ -246,7 +252,7 @@ export default function Home() {
                   boxShadow: '0px 0px 10px rgba(255, 178, 41, 0.30)', 
 
                   display: 'flex',
-                  alignContent: 'center',
+                  alignItems: 'center',
                   justifyContent: 'center',
                   flexDirection: 'column'
                 }}

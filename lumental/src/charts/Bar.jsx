@@ -1,4 +1,5 @@
 import React from "react";
+/* eslint-disable */
 
 export default function HRVBarChart({ data }) {
   const maxValue = Math.max(...data.map((d) => d.value));
@@ -6,43 +7,34 @@ export default function HRVBarChart({ data }) {
   return (
     <div>
       
-      <svg width="90%" height="100">
-  {data.map((item, idx) => {
-    const barWidth = 14;
-    const gap = 8;
-    const x = idx * (barWidth + gap);
+      <svg width="250" height="90" style={{margin: 0, padding: 0}}>
+        {data.map((item, idx) => {
+          const barWidth = 12;
+          const gap = 4;
+          const x = idx * (barWidth + gap);
 
-    const barHeight = (item.value / maxValue) * 80;
-    const y = 100 - barHeight;
+          const barHeight = (item.value / maxValue) * 80;
+          const y = 100 - barHeight;
 
-    const hour = new Date(item.ts).getHours(); // 10, 11, 12...
+          const hour = new Date(item.ts).getHours(); 
 
-    return (
-      <g key={idx}>
-        {/* 막대 */}
-        <rect
-          x={x}
-          y={y}
-          width={barWidth}
-          height={barHeight}
-          rx="6"
-          fill="#ff6f61"
-        />
+          return (
+            <g  key={idx}>
+              {/* 막대 */}
+              <rect
+                x={x}
+                y={y}
+                width={barWidth}
+                height={barHeight}
+                rx="6"
+                fill="#ff6f61"
+              />
 
-        {/* 아래 시간 라벨 */}
-        <text
-          x={x + barWidth / 2}
-          y={125}
-          textAnchor="middle"
-          fontSize="10"
-          fill="#888"
-        >
-          {hour}
-        </text>
-      </g>
-    );
-  })}
-</svg>
+              
+            </g>
+          );
+        })}
+      </svg>
     </div>
   );
 }

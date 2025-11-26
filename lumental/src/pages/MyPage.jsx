@@ -29,7 +29,7 @@ export default function MyPage() {
             fontWeight: 700,
             color: '#000',
             wordWrap: 'break-word',
-            paddingLeft: 20
+            //paddingLeft: 20
           }}
         > 
           MY PAGE

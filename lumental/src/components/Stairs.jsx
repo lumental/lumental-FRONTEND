@@ -24,6 +24,11 @@ const Stairs = ({ isCleared }) => {
     days[0].isActive = false;
   }
 
+  if(!isCleared){
+    days[0].isActive = true;
+    days[1].isActive = false;
+  }
+
 
   return (
     <div className="steps-container">

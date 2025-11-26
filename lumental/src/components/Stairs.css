@@ -43,6 +43,11 @@
   /* Day Label 위에 중앙 정렬 및 위치 조정 */
   bottom: 140px; /* day-label의 높이(35px)만큼 위로 올림 */
   right: 90px;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.flame-img.hide {
+  opacity: 0;
 }
 
 
