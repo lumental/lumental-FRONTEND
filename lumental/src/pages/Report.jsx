@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; 
+import hrv from '../assets/hrv 그래프.png';
+import step from '../assets/걸음수 그래프.png';
+import sleep from '../assets/수면 그래프.png';
+import heartrate from '../assets/심박수 그래프.png';
 
 export default function Report() {
   
@@ -44,7 +48,7 @@ export default function Report() {
             wordWrap: 'break-word',
           }}
         >
-          {name} 님은{' '}
+          {name} 님의{' '}
         </span>
         <span
           style={{
@@ -55,7 +59,7 @@ export default function Report() {
             wordWrap: 'break-word',
           }}
         >
-          "증상"{' '} 
+          데이터 
         </span>
         <span
           style={{
@@ -66,7 +70,7 @@ export default function Report() {
             wordWrap: 'break-word',
           }}
         >
-          이 의심돼요
+          를 확인해보세요!
         </span>
       </div>
 
@@ -88,9 +92,14 @@ export default function Report() {
             boxShadow: '0px 0px 20px rgba(255, 104, 84, 0.30)',
             borderRadius: 28,
             border:'0.5px solid rgba(255, 104, 84, 0.30)',
-            marginTop: 40
+            marginTop: 40,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
-        ></div>
+        >
+          <img style={{width: '90%', height: '90%'}} src={heartrate} alt="심박수 그래프" />
+        </div>
 
         <div
           style={{
@@ -100,9 +109,14 @@ export default function Report() {
             boxShadow: '0px 0px 20px rgba(255, 104, 84, 0.30)',
             borderRadius: 28,
             border:'0.5px solid rgba(255, 104, 84, 0.30)',
-            marginTop: 20
+            marginTop: 20,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
-        ></div>
+        >
+          <img style={{width: '90%', height: '90%'}} src={hrv} alt="hrv 그래프" />
+        </div>
 
         <div
           style={{
@@ -112,9 +126,14 @@ export default function Report() {
             boxShadow: '0px 0px 20px rgba(95, 103, 255, 0.30)',
             borderRadius: 28,
             border:'0.5px solid rgba(95, 103, 255, 0.30)',
-            marginTop: 20
+            marginTop: 20,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
-        ></div>
+        >
+          <img style={{width: '95%', height: '100%'}} src={sleep} alt="수면 그래프" />
+        </div>
 
         <div
           style={{
@@ -124,9 +143,14 @@ export default function Report() {
             boxShadow: '0px 0px 20px rgba(255, 178, 41, 0.30)',
             borderRadius: 28,
             border:'0.5px solid rgba(255, 178, 41, 0.30)',
-            marginTop: 20
+            marginTop: 20,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
-        ></div>
+        >
+          <img style={{width: '95%', height: '95%'}} src={step} alt="활동량 그래프" />
+        </div>
 
         <div
           style={{
