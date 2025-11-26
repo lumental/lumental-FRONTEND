@@ -177,7 +177,8 @@ export default function Home() {
               justifyContent: 'center',
               marginTop: '16px',
               alignItems: 'center',
-              width: '100%'
+              width: '100%',
+              marginBottom: 20
             }}
           >
             <div
