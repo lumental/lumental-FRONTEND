@@ -11,10 +11,6 @@
 /* 개별 스텝 아이템 */
 .step-item {
   position: absolute;
-  
-  
-  
-  
   /* 계단 모양을 만들기 위한 높이 조정 */
   height: 50px; 
 }
@@ -45,9 +41,8 @@
   height: 70px; /* 이미지 높이 */
   
   /* Day Label 위에 중앙 정렬 및 위치 조정 */
-  bottom: 35px; /* day-label의 높이(35px)만큼 위로 올림 */
-  left: 50%; /* 부모(step-item)의 중앙으로 이동 */
-  transform: translateX(-50%); /* 자신의 너비(70px)의 절반(35px)만큼 왼쪽으로 이동하여 완전한 중앙 정렬 */
+  bottom: 140px; /* day-label의 높이(35px)만큼 위로 올림 */
+  right: 90px;
 }
 
 

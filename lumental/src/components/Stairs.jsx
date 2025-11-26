@@ -11,10 +11,8 @@ for (let i = 0; i < 30; i++) {
 // 개별 스텝 아이템 컴포넌트
 const StepItem = ({ day, isActive }) => {
   return (
-    <div className="step-item">
-      
-      <div className="day-label">Day{day}</div>
-    </div>
+  <div className="day-label">Day{day}</div>
+    
   );
 };
 

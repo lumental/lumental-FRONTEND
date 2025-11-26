@@ -5,6 +5,10 @@ import flameImg from '../assets/flame.png';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Circle from '../charts/Circle';
+import TinyBar from '../charts/Bar';
+import HRVBarChart from '../charts/Bar';
+import dummy from '../charts/dummy.json';
 
 export default function Home() {
   function MoodCard() {
@@ -42,15 +46,19 @@ export default function Home() {
 
   
 
-  useEffect(() => {
+  
     const getData = async () => {
       const api = import.meta.env.VITE_API_URL;
       const res = await axios.get(`${api}/test/biometric-report`);
       console.log(res.data);
     };
 
-    getData();
-  }, []);
+    const step = 5000;
+    const data = dummy.data.hrv.data;
+    
+
+    
+  
 
 
   return (
@@ -202,7 +210,7 @@ export default function Home() {
                     borderRadius: '23.4px',
                   }}
                 >
-                  
+                  <button onClick={getData}></button>
                 </div>
 
                 <div
@@ -214,8 +222,16 @@ export default function Home() {
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
                     boxShadow: '0px 0px 20px rgba(255, 104, 84, 0.15)',
                     borderRadius: '23.4px',
+
+                    display: 'flex',
+                    alignContent: 'center',
+                    justifyContent: 'center',
                   }}
-                ></div>
+                >
+                  <HRVBarChart data={data} />
+                </div>
+
+
               </div>
 
               
@@ -228,8 +244,20 @@ export default function Home() {
                   borderRadius: '21.92px',
                   border: '0.5px solid rgba(255, 178, 41, 0.30)',
                   boxShadow: '0px 0px 10px rgba(255, 178, 41, 0.30)', 
+
+                  display: 'flex',
+                  alignContent: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'column'
                 }}
-              ></div>
+              >
+                <div>걸음수</div>
+                <div>
+                  <Circle steps={step} />
+                </div>
+              </div>
+
+
             </div>
           </div>
           
