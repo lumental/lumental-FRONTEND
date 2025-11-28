@@ -170,7 +170,7 @@
   height: 60px;
   border-radius: 50px;
   backdrop-filter: blur(15px);
-  background: rgb(252, 251, 253);
+  background: rgba(255, 255, 255, 0.1);
   opacity: 0.9;
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-sizing: content-box;
@@ -220,4 +220,19 @@ html, body{
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+.glass-card2 {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  border-radius: 50px;
+  backdrop-filter: blur(15px);
+  background: rgb(252, 251, 253);
+  opacity: 0.9;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-sizing: content-box;
+  margin-bottom: 50px;
+  z-index: 10;
+  overflow: hidden;
 }

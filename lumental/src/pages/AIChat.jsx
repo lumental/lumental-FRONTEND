@@ -1,7 +1,8 @@
-import flame from '../assets/그림자불꽃.png';
+import flame from '../assets/그림자불꽃2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faBars } from '@fortawesome/free-solid-svg-icons';
+import AppChat from '../chatbot/Appchat';
 
 export default function AIChat() {
   return (
@@ -12,17 +13,39 @@ export default function AIChat() {
         padding: '16px 16px 88px', 
         borderLeft: '1px solid rgba(0,0,0,0.08)',  
         borderRight: '1px solid rgba(0,0,0,0.08)',
-        background: 'linear-gradient(180deg, #F8F8F8, #FFDE89, #8BB5FF)',
+        background: 'linear-gradient(180deg, #F8F8F8 30%, #FFDE89, #8BB5FF)',
         height: 750
       }}>
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, marginTop: 30}}>불씨</div>
-        <img style={{width: 100, height: 100, margin: 0, padding: 0}} src={flame} alt='불씨' />
+        <div />
+        <div 
+          style = {{
+            display: 'flex', 
+            flexDirection: 'row', 
+            marginTop: 30,
+            alignItems: "center",
+            justifyContent: "space-between", 
+            width: '50%',  
+            position:'relative',
+            marginLeft: 'auto'
+          }}
+        >
+          <div style={{fontSize: 24, left: '50%' }}>불씨</div>
+          <div>
+            <button style={{cursor: 'pointer', background: 'none', border: 'none'}}>
+              <FontAwesomeIcon icon={faBars} style={{ fontSize: "18px" }} />
+
+            </button>
+          </div>
+        </div>
+        
+        <img style={{width: 100, height: 70, margin: 0, paddingTop: 50}} src={flame} alt='불씨' />
 
         <div style={{height: 550}}>
+          
 
         </div>
 
-        <div className='glass-card' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className='glass-card2' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <div>
               <button
                 style={{

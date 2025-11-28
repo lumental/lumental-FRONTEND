@@ -3,6 +3,8 @@ import { faGear, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faFile, faHeadphones } from '@fortawesome/free-regular-svg-icons';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
 
 
 
@@ -15,13 +17,22 @@ export default function MyPage() {
     navigate('/Register');
   };
 
+  
+  const [name, setName] = useState("");
+  
+  useEffect(() => {;
+    const savedName = localStorage.getItem("name");
+    setName(savedName);
+  
+  }, []);
+
 
   return (
     <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',
     borderRight: '1px solid rgba(0,0,0,0.08)',  }}>
 
-      <div style={{display: 'flex', flexDirection: 'row'}}>
-        <h1
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between",}}>
+        <p
           style={{
             margin: 0,                
             fontSize: 30,
@@ -33,7 +44,7 @@ export default function MyPage() {
           }}
         > 
           MY PAGE
-        </h1>
+        </p>
 
         <button 
           className='SettingButton'
@@ -42,7 +53,8 @@ export default function MyPage() {
             outline: 'none',      
             background: 'white',
             //paddingTop: 10,
-            paddingLeft: 150,
+            //paddingLeft: 150,
+            right: 0,
             width: 40,
             height: 40,
             cursor: 'pointer',
@@ -67,11 +79,11 @@ export default function MyPage() {
           }}
         >
           <div style={{width: 100, height: 100, backgroundColor: '#e6e4ddff', borderRadius: 50, padding: 0, margin: 0}} ></div>
-          <p style={{color: '#2C2C2C', fontSize: 25,  fontWeight: '600', paddingTop: 10, paddingBottom: 5, margin: 0}}>Name</p>
+          <p style={{color: '#2C2C2C', fontSize: 25,  fontWeight: '600', paddingTop: 10, paddingBottom: 5, margin: 0}}>{name}</p>
           <p style={{color: '#7E7E7E', fontSize: 12, /*fontFamily: 'Pretendard',*/ fontWeight: '500', padding: 5, margin: 0 }}>자기소개</p>
-          <p style={{color: '#7E7E7E', fontSize: 12,  fontWeight: '500', paddingBottom: 10, margin: 0}}> level</p>
+          <p style={{color: '#7E7E7E', fontSize: 12,  fontWeight: '500', paddingBottom: 10, margin: 0}}> LV. 1</p>
           <button 
-            onClick={goToEditPage} 
+            //onClick={goToEditPage} 
             style={{
               width: 115, 
               height: 30, 
