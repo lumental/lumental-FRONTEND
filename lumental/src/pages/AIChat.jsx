@@ -17,8 +17,20 @@ export default function AIChat() {
     }, []);
 
   const [message, setMessage] =useState("");
-  const [chatList, setChatList] = useState([]);
+  const [chatList, setChatList] = useState([{sender: "bot", text: "오늘 하루는 어땠어?"}]);
   const [fromBot, setFromBot] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("chatList", JSON.stringify(chatList));
+  }, [chatList]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("chatList");
+    if (saved) {
+      setChatList(JSON.parse(saved));
+    }
+  }, []);
+  
 
   const onChange = (e) => {
     setMessage(e.target.value)
@@ -108,7 +120,7 @@ export default function AIChat() {
           </div>
         </div>
         
-        <img style={{width: 100, height: 70, margin: 0, paddingTop: 50}} src={flame} alt='불씨' />
+        <img style={{width: 100, height: 70, margin: 0, paddingTop: 50, paddingBottom: 10}} src={flame} alt='불씨' />
 
         <div 
           style={{
@@ -131,7 +143,8 @@ export default function AIChat() {
                   maxWidth: "70%",
                   color: msg.sender === "me" ? "white" : "#4E4E4F",
                   backgroundColor:
-                    msg.sender === "me" ? "#468AF0" : "#FFFFFF80",
+                  msg.sender === "me" ? "#468AF0" : "#FFFFFF80",
+                  boxShadow: "1px 1px 6px rgba(130, 130, 130, 0.20)",
                 }}
               >
                 {msg.text}
