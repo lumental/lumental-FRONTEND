@@ -96,7 +96,7 @@ export default function AIChat() {
         borderLeft: '1px solid rgba(0,0,0,0.08)',  
         borderRight: '1px solid rgba(0,0,0,0.08)',
         background: 'linear-gradient(180deg, #F8F8F8 30%, #FFDE89, #8BB5FF)',
-        height: 750
+        height: 800
       }}>
         <div />
         <div 
@@ -124,7 +124,8 @@ export default function AIChat() {
 
         <div 
           style={{
-            height: 550
+            height: 550,
+            overflowY: "auto",
           }}
         >
           {chatList.map((msg, idx) => (
