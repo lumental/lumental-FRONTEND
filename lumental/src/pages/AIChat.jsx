@@ -154,7 +154,7 @@ export default function AIChat() {
 
         </div>
 
-        <div className='glass-card2' style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 50}}>
+        <div className='glass-card2' style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 100}}>
             <div>
               <button
                 style={{
