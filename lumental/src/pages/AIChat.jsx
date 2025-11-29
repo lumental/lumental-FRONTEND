@@ -3,8 +3,78 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faCirclePlus, faBars } from '@fortawesome/free-solid-svg-icons';
 import AppChat from '../chatbot/Appchat';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 
 export default function AIChat() {
+
+  const [name, setName] = useState("");
+  
+  useEffect(() => {
+    const savedName = localStorage.getItem("name");
+    setName(savedName);
+    }, []);
+
+  const [message, setMessage] =useState("");
+  const [chatList, setChatList] = useState([]);
+  const [fromBot, setFromBot] = useState("");
+
+  const onChange = (e) => {
+    setMessage(e.target.value)
+  };
+
+  const api = import.meta.env.VITE_API_URL;
+
+  const postChatMessage = async () => {
+
+    try {
+      const res = await axios.post(`${api}/chat/message`, {
+        "userId": name,
+        "message": message
+      });
+
+      console.log(res.status);
+    } catch (error) {
+      console.error("POST 에러: ", error);
+    }
+    
+  };
+
+  const getChatMessage = async () => {
+    try {
+      const botres = await axios.get(`${api}/chat/message`);
+      console.log(botres.data.reply);
+      setFromBot(botres.data.reply);
+
+      const botMessage = {
+        sender: "bot",
+        text: fromBot
+      };
+
+      setChatList((prev) => [...prev, botMessage]);
+  
+    
+    } catch (error) {
+      console.error("GET 에러: ", error);
+    }
+
+  };
+
+  const onClick = async () => {
+    const myMessage = {
+      sender: "me",
+      text: message
+    }
+    setChatList((prev) => [...prev, myMessage]);
+
+    await postChatMessage();
+    await getChatMessage();
+
+    setMessage("");
+    
+  };
+
   return (
     <main
       style={{
@@ -24,12 +94,12 @@ export default function AIChat() {
             marginTop: 30,
             alignItems: "center",
             justifyContent: "space-between", 
-            width: '50%',  
+            width: '60%',  
             position:'relative',
             marginLeft: 'auto'
           }}
         >
-          <div style={{fontSize: 24, left: '50%' }}>불씨</div>
+          <div style={{fontSize: 24, marginLeft: 15 }}>불씨</div>
           <div>
             <button style={{cursor: 'pointer', background: 'none', border: 'none'}}>
               <FontAwesomeIcon icon={faBars} style={{ fontSize: "18px" }} />
@@ -40,12 +110,38 @@ export default function AIChat() {
         
         <img style={{width: 100, height: 70, margin: 0, paddingTop: 50}} src={flame} alt='불씨' />
 
-        <div style={{height: 550}}>
-          
+        <div 
+          style={{
+            height: 550
+          }}
+        >
+          {chatList.map((msg, idx) => (
+            <div
+              key={idx}
+              style={{
+                display: "flex",
+                justifyContent: msg.sender === "me" ? "flex-end" : "flex-start",
+                marginBottom: 12,
+              }}
+            >
+              <div
+                style={{
+                  padding: "8px 12px",
+                  borderRadius: 12,
+                  maxWidth: "70%",
+                  color: msg.sender === "me" ? "white" : "#4E4E4F",
+                  backgroundColor:
+                    msg.sender === "me" ? "#468AF0" : "#FFFFFF80",
+                }}
+              >
+                {msg.text}
+              </div>
+            </div>
+          ))}
 
         </div>
 
-        <div className='glass-card2' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className='glass-card2' style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 50}}>
             <div>
               <button
                 style={{
@@ -59,16 +155,18 @@ export default function AIChat() {
               </button>
             </div>
             <input 
-              name='character'
+              name='message'
               className='chat' 
               type='text' 
               placeholder='메세지 보내기' 
-              /*value={character}
-              onChange={onChange}*/
+              /*value={character}*/
+              onChange={onChange}
+              value = {message}
               style={{ background: 'none', border: 'none', height: 60, width: '70%', opacity: 0.6}} 
             />
             <div>
               <button
+                onClick={onClick}
                 style={{
                   background: 'none',
                   border: 'none',
