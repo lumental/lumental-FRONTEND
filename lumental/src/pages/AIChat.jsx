@@ -114,7 +114,7 @@ export default function AIChat() {
           <div style={{fontSize: 24, marginLeft: 15 }}>불씨</div>
           <div>
             <button style={{cursor: 'pointer', background: 'none', border: 'none'}}>
-              <FontAwesomeIcon icon={faBars} style={{ fontSize: "18px" }} />
+              <FontAwesomeIcon icon={faBars} color='black' style={{ fontSize: "18px" }} />
 
             </button>
           </div>
@@ -184,7 +184,8 @@ export default function AIChat() {
                 style={{
                   background: 'none',
                   border: 'none',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  paddingLeft: 10
                 }}
               >
                 <FontAwesomeIcon icon={faPaperPlane} color='#468AF0' style={{ fontSize: "20px" }} />
