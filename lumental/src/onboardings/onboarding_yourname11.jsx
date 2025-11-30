@@ -25,7 +25,7 @@ export default function OnboardingYourname() {
 
       console.log(res.status);
 
-      const userId = res.data.userId;
+      const userId = res.data.data.userId;
       localStorage.setItem("userId", userId);
 
       localStorage.setItem("hasSeenOnboarding", "true");
