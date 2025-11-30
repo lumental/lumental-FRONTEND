@@ -60,10 +60,10 @@ export default function AIChat() {
 
       const botMessage = {
         sender: 'bot',
-        text: res.data.reply
+        text: res.data.data.reply
       }
       console.log(res.data);
-      console.log(res.data.reply);
+      console.log(res.data.data.reply);
       setChatList((prev) => [...prev, botMessage]);
       
 
