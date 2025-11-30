@@ -40,7 +40,7 @@ export default function AIChat() {
 
   useEffect(() => {
     const savedUserId = localStorage.getItem("userId");
-    setUserId(savedUserId);
+    setUserId(parseInt(savedUserId));
 
   }, []);
 
