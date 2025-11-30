@@ -2,9 +2,9 @@ import flame from '../assets/그림자불꽃2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faCirclePlus, faBars } from '@fortawesome/free-solid-svg-icons';
-import AppChat from '../chatbot/Appchat';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+/* eslint-disable */
 
 
 export default function AIChat() {
@@ -36,26 +36,44 @@ export default function AIChat() {
     setMessage(e.target.value)
   };
 
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    const savedUserId = localStorage.getItem("userId");
+    setUserId(savedUserId);
+
+  }, []);
+
+
   const api = import.meta.env.VITE_API_URL;
 
   const postChatMessage = async () => {
 
     try {
-      const res = await axios.post(`${api}/chat/message`, {
-        "userId": name,
+      const res = await axios.post(`${api}/api/chat/message`, {
+        "userId": userId,
         "message": message
       });
 
       console.log(res.status);
+      console.log(message);
+
+      const botMessage = {
+        sender: 'bot',
+        text: res.data.reply
+      }
+      setChatList((prev) => [...prev, botMessage]);
+      
+
     } catch (error) {
       console.error("POST 에러: ", error);
     }
     
   };
 
-  const getChatMessage = async () => {
+  /*const getChatMessage = async () => {
     try {
-      const botres = await axios.get(`${api}/chat/message`);
+      const botres = await axios.get(`${api}/api/chat/message`);
       console.log(botres.data.reply);
       setFromBot(botres.data.reply);
 
@@ -71,7 +89,7 @@ export default function AIChat() {
       console.error("GET 에러: ", error);
     }
 
-  };
+  };*/
 
   const onClick = async () => {
     const myMessage = {
@@ -81,7 +99,7 @@ export default function AIChat() {
     setChatList((prev) => [...prev, myMessage]);
 
     await postChatMessage();
-    await getChatMessage();
+    //await getChatMessage();
 
     setMessage("");
     
@@ -96,7 +114,7 @@ export default function AIChat() {
         borderLeft: '1px solid rgba(0,0,0,0.08)',  
         borderRight: '1px solid rgba(0,0,0,0.08)',
         background: 'linear-gradient(180deg, #F8F8F8 30%, #FFDE89, #8BB5FF)',
-        height: 800
+        
       }}>
         <div />
         <div 
@@ -155,7 +173,7 @@ export default function AIChat() {
 
         </div>
 
-        <div className='glass-card2' style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 100}}>
+        <div className='glass-card2' style={{display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
             <div>
               <button
                 style={{

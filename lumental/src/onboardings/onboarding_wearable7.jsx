@@ -1,7 +1,8 @@
-import watch from '../assets/온보딩_워치연동.png';
+//import watch from '../assets/온보딩_워치연동.png';
 import { useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import flame from '../assets/3단계 귀요미.png';
 
 export default function OnboardingWearable() {
     const navigate = useNavigate();
@@ -58,22 +59,66 @@ export default function OnboardingWearable() {
 
       getKakaoAccessToken();
     }, []);
+  
+    const [file, setFile] = useState(null);
+
+    const onChangeFile = (e) => {
+      const selectedFile = e.target.files[0];
+      setFile(selectedFile);
+
+      console.log("업로드된 파일: ", selectedFile);
+    };
 
 
   return (
-    <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',
-    borderRight: '1px solid rgba(0,0,0,0.08)',  }}>
-    
-        <img src={watch} alt="온보딩 워치 연동" className='onimg' />
-
-        <button 
-        onClick={handleFinishOnboarding} 
-        className="Next"
-        >
-            연동하기
-        </button>
-
-      
-    </main>
-  );
+      <main style={{ 
+        maxWidth: 430, 
+        margin: '0 auto', 
+        padding: '16px 16px 88px', 
+        borderLeft: '1px solid rgba(0,0,0,0.08)',
+        borderRight: '1px solid rgba(0,0,0,0.08)', 
+        background: 'linear-gradient(135deg, black 0%, #011635 43%, #468AF0 86%)', 
+        height: '100dvh', 
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat', 
+        }}
+      >
+  
+          <div style={{fontSize: 24, color: 'white', marginTop: '15%', marginBottom: '10%'}}><p>생체 데이터를 올려주세요</p></div>
+  
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img className='startlogo' src={flame} alt="귀요미" style={{height: 330, width: 240, boxSizing: 'content-box', marginTop: 50, marginLeft: 15}}  /></div>
+          
+          <div style={{height: 50}}></div>
+  
+  
+          <div className='glass-card' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <input 
+                name='file'
+                className='name' 
+                type='file' 
+                accept="*"
+                placeholder='파일을 업로드해주세요.' 
+                value={file}
+                onChange={onChangeFile}
+                style={{background: 'none', border: 'none', height: 60, width: '100%'}} 
+              />
+              {file && <p>선택된 파일: {file.name}</p>}
+          </div>
+  
+          <div>
+              <button 
+              onClick= {handleFinishOnboarding}
+              className="Next"
+              
+              >
+                  다음
+              </button>
+          </div>
+          
+  
+          
+  
+        
+      </main>
+    );
 }

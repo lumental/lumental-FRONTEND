@@ -1,24 +1,40 @@
 import { useNavigate } from 'react-router-dom';
 import flame from '../assets/flame.png';
 import { useState } from 'react';
+import axios from 'axios';
 
 
 
 export default function OnboardingYourname() {
     const navigate = useNavigate();
 
-    const handleFinishOnboarding = () => {
-    // 로컬 스토리지에 '봤음' 표시
-    localStorage.setItem("hasSeenOnboarding", "true");
-    
-    navigate("/home");
-    };
-
     const [name, setName] = useState("");
 
     const onChange = (e) => {
       setName(e.target.value)
       localStorage.setItem("name", e.target.value);
+    };
+
+    const api = import.meta.env.VITE_API_URL;
+
+    const onClick = async () => {
+      try {
+      const res = await axios.post(`${api}/api/users/onboarding`, {
+        "username": name
+      });
+
+      console.log(res.status);
+
+      const userId = res.data.userId;
+      localStorage.setItem("userId", userId);
+
+      localStorage.setItem("hasSeenOnboarding", "true");
+      navigate("/home");
+      
+    } catch (error) {
+      console.error("POST 에러: ", error);
+      navigate("/home");
+    }
     };
 
   return (
@@ -56,7 +72,7 @@ export default function OnboardingYourname() {
 
         <div>
             <button 
-            onClick= {handleFinishOnboarding}
+            onClick= {onClick}
             className="Next"
             
             >
