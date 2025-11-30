@@ -36,7 +36,7 @@ export default function AIChat() {
     setMessage(e.target.value)
   };
 
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const savedUserId = localStorage.getItem("userId");
