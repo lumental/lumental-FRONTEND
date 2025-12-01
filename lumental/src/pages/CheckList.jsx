@@ -47,7 +47,7 @@ export default function CheckList() {
 
   const isCleared = Object.values(check).every(Boolean);
 
-  useEffect(() => {
+   useEffect(() => {
     const saved = localStorage.getItem("recommendedCards");
     if (!saved) return;
 
@@ -127,6 +127,8 @@ export default function CheckList() {
               
               <input
                 type="text"
+                className="check-input"
+                placeholder="오늘의 도전을 추가해보세요."
                 name="checklist1"
                 value={input.checklist1}
                 onChange={onChange}
@@ -144,6 +146,8 @@ export default function CheckList() {
               />
               <input
                 type="text"
+                className="check-input"
+                placeholder="오늘의 도전을 추가해보세요."
                 name="checklist2"
                 value={input.checklist2}
                 onChange={onChange}
@@ -161,6 +165,8 @@ export default function CheckList() {
               />
               <input
                 type="text"
+                className="check-input"
+                placeholder="오늘의 도전을 추가해보세요."
                 name="checklist3"
                 value={input.checklist3}
                 onChange={onChange}
@@ -178,6 +184,8 @@ export default function CheckList() {
               />
               <input
                 type="text"
+                className="check-input"
+                placeholder="오늘의 도전을 추가해보세요."
                 name="checklist4"
                 value={input.checklist4}
                 onChange={onChange}
@@ -195,6 +203,8 @@ export default function CheckList() {
               />
               <input
                 type="text"
+                className="check-input"
+                placeholder="오늘의 도전을 추가해보세요."
                 name="checklist5"
                 value={input.checklist5}
                 onChange={onChange}

@@ -131,6 +131,8 @@
   border-radius: 4px;
   cursor: pointer;
   transition: 0.15s;
+  margin-right: 10px;
+  box-sizing: content-box;
 }
 
 .CheckBox:checked {
@@ -235,4 +237,9 @@ html, body{
   margin-bottom: 50px;
   z-index: 10;
   overflow: hidden;
+}
+
+.check-input{
+  border: none;
+  background: none;
 }
