@@ -116,24 +116,39 @@ export default function OnboardingWearable() {
     };*/
 
     const handleUpload = async () => {
+      if (!file) {
+        alert("파일을 선택해주세요!");
+        return;
+      }
+
+      if (!userId) {
+        alert("userId가 없습니다. 온보딩에서 userId 저장 확인!");
+        return;
+      }
+
       try {
         const formData = new FormData();
-        formData.append("userId", userId);
-        formData.append("date", "date", new Date().toISOString().slice(0, 10));
+        formData.append("userId", String(userId));
+        formData.append("date", new Date().toISOString().slice(0, 10));
         formData.append("file", file);
 
-        console.log("폼 데이터 확인:", userId, getTodayDate(), file);
+        // formData 내용 확인
+        for (let pair of formData.entries()) {
+          console.log(pair[0] + ": ", pair[1]);
+        }
 
         const res = await axios.post(
           `${api}/api/healthkit/upload`,
           formData,
           {
             headers: {
-              
+              // ❗절대로 Content-Type 넣지 말기
+              // Axios가 boundary 자동 설정해야 multipart 정상작동
             },
           }
         );
 
+        // 저장
         localStorage.setItem("healthSummary", JSON.stringify(res.data));
 
         console.log("업로드 성공:", res.data);
@@ -142,8 +157,7 @@ export default function OnboardingWearable() {
       } catch (error) {
         console.error("업로드 중 에러:", error);
         alert("업로드 중 오류가 발생했습니다.");
-        handleFinishOnboarding();
-        }
+      }
     };
 
     
