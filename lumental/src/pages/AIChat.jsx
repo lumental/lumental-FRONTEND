@@ -177,6 +177,7 @@ export default function AIChat() {
                 }}
               >
                 {msg.text}
+                {msg.cards}
               </div>
             </div>
           ))}
