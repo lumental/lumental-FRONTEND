@@ -47,6 +47,22 @@ export default function CheckList() {
 
   const isCleared = Object.values(check).every(Boolean);
 
+  useEffect(() => {
+    const saved = localStorage.getItem("recommendedCards");
+    if (!saved) return;
+
+    const cards = JSON.parse(saved);
+
+    setInput(prev => ({
+      ...prev,
+      checklist1: cards[0]?.title || "",
+      checklist2: cards[1]?.title || "",
+      checklist3: cards[2]?.title || "",
+      checklist4: cards[3]?.title || "",
+      checklist5: cards[4]?.title || "",
+    }));
+  }, []);
+
 
 
   return (
