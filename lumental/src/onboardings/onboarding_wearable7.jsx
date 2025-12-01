@@ -78,9 +78,18 @@ export default function OnboardingWearable() {
       setUserId(parseInt(savedUserId));
 
     }, []);
+
+    const getTodayDate = () => {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, "0");
+      const d = String(now.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    };
+
     const api = import.meta.env.VITE_API_URL;
 
-    const handleUpload = async () => {
+    /*const handleUpload = async () => {
       try {
         const signedRes = await axios.post(`${api}/api/biometric/upload-url`,{
           fileName: file.name
@@ -104,7 +113,40 @@ export default function OnboardingWearable() {
         console.log("에러 발생: ", error);
         handleFinishOnboarding();
       }
+    };*/
+
+    const handleUpload = async () => {
+      try {
+        const formData = new FormData();
+        formData.append("userId", userId);
+        formData.append("date", getTodayDate());
+        formData.append("file", file);
+
+        console.log("폼 데이터 확인:", userId, getTodayDate(), file);
+
+        const res = await axios.post(
+          `${api}/api/biometric/upload/{userId}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        localStorage.setItem("healthSummary", JSON.stringify(res.data));
+
+        console.log("업로드 성공:", res.data);
+
+        handleFinishOnboarding();
+      } catch (error) {
+        console.error("업로드 중 에러:", error);
+        alert("업로드 중 오류가 발생했습니다.");
+        handleFinishOnboarding();
+        }
     };
+
+    
 
     
 
