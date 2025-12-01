@@ -60,11 +60,19 @@ export default function AIChat() {
 
       const botMessage = {
         sender: 'bot',
-        text: res.data.data.reply
+        text: res.data.data.reply,
+        cards: res.data.data.recommendedCards || []
       }
       console.log(res.data);
       console.log(res.data.data.reply);
       setChatList((prev) => [...prev, botMessage]);
+
+      if (res.data.data.recommendedCards) {
+        localStorage.setItem(
+          "recommendedCards",
+          JSON.stringify(res.data.data.recommendedCards)
+        );
+      }
       
 
     } catch (error) {
