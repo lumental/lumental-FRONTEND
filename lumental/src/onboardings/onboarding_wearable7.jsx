@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import flame from '../assets/3단계 귀요미.png';
+/* eslint-disable */
 
 export default function OnboardingWearable() {
     const navigate = useNavigate();
@@ -67,7 +68,47 @@ export default function OnboardingWearable() {
       setFile(selectedFile);
 
       console.log("업로드된 파일: ", selectedFile);
+      
     };
+
+
+    const [userId, setUserId] = useState(null);
+    useEffect(() => {
+      const savedUserId = localStorage.getItem("userId");
+      setUserId(parseInt(savedUserId));
+
+    }, []);
+    const api = import.meta.env.VITE_API_URL;
+
+    const handleUpload = async () => {
+      try {
+        const signedRes = await axios.post(`${api}/api/biometric/upload-url`,{
+          fileName: file.name
+        });
+        const { uploadUrl, fileUrl } = signedRes.data;
+
+        console.log("uploadUrl:", uploadUrl);
+        console.log("fileUrl:", fileUrl);
+
+        await axios.put(uploadUrl, file);
+
+        await axios.post(`${api}/api/biometric/upload/${userId}`, {
+          fileUrl: fileUrl
+        });
+
+        console.log("업로드 성공");
+
+        handleFinishOnboarding();
+
+      } catch (error) {
+        console.log("에러 발생: ", error);
+        handleFinishOnboarding();
+      }
+    };
+
+    
+
+    
 
 
   return (
@@ -84,7 +125,7 @@ export default function OnboardingWearable() {
         }}
       >
   
-          <div style={{fontSize: 24, color: 'white', marginTop: '15%', marginBottom: '10%'}}><p>생체 데이터를 올려주세요</p></div>
+          <div style={{fontSize: 24, color: 'white', marginTop: '15%', marginBottom: '10%'}}><p>생체 데이터를 올려주세요(.zip)</p></div>
   
           <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img className='startlogo' src={flame} alt="귀요미" style={{height: 330, width: 240, boxSizing: 'content-box', marginTop: 50, marginLeft: 15}}  /></div>
           
@@ -97,17 +138,16 @@ export default function OnboardingWearable() {
                 className='name' 
                 type='file' 
                 accept="*"
-                placeholder='파일을 업로드해주세요.' 
-                value={file}
+                //value={file}
                 onChange={onChangeFile}
-                style={{background: 'none', border: 'none', height: 60, width: '100%'}} 
+                style={{background: 'none', border: 'none', height: '100%', width: '50%'}} 
               />
-              {file && <p>선택된 파일: {file.name}</p>}
           </div>
+          
   
           <div>
               <button 
-              onClick= {handleFinishOnboarding}
+              onClick= {handleUpload}
               className="Next"
               
               >
