@@ -9,16 +9,9 @@ import axios from 'axios';
 
 export default function AIChat() {
 
-  const [name, setName] = useState("");
-  
-  useEffect(() => {
-    const savedName = localStorage.getItem("name");
-    setName(savedName);
-    }, []);
-
   const [message, setMessage] =useState("");
   const [chatList, setChatList] = useState([{sender: "bot", text: "오늘 하루는 어땠어?"}]);
-  const [fromBot, setFromBot] = useState("");
+  
 
   useEffect(() => {
     localStorage.setItem("chatList", JSON.stringify(chatList));
@@ -177,7 +170,7 @@ export default function AIChat() {
                 }}
               >
                 {msg.text}
-                {msg.cards.length > 0 && (
+                {Array.isArray(msg.cards) && msg.cards.length > 0 && (
                   <div>
                     {msg.cards.map((card, i) => (
                       <div key={i}>{card.title}</div>
