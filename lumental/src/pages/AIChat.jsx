@@ -177,7 +177,14 @@ export default function AIChat() {
                 }}
               >
                 {msg.text}
-                {msg.cards}
+                {msg.cards.length > 0 && (
+                  <div>
+                    {msg.cards.map((card, i) => (
+                      <div key={i}>{card.title}</div>
+                    ))}
+                  </div>
+                )}
+
               </div>
             </div>
           ))}
