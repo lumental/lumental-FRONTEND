@@ -125,7 +125,7 @@ export default function OnboardingWearable() {
         console.log("폼 데이터 확인:", userId, getTodayDate(), file);
 
         const res = await axios.post(
-          `${api}/api/biometric/upload/{userId}`,
+          `${api}/api/healthkit/upload`,
           formData,
           {
             headers: {
