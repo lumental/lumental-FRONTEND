@@ -68,7 +68,7 @@ export default function OnboardingWearable() {
       setFile(selectedFile);
 
       console.log("업로드된 파일: ", selectedFile);
-      
+      console.log(userId);
     };
 
 
@@ -119,7 +119,7 @@ export default function OnboardingWearable() {
       try {
         const formData = new FormData();
         formData.append("userId", userId);
-        formData.append("date", getTodayDate());
+        formData.append("date", "date", new Date().toISOString().slice(0, 10));
         formData.append("file", file);
 
         console.log("폼 데이터 확인:", userId, getTodayDate(), file);
@@ -129,7 +129,7 @@ export default function OnboardingWearable() {
           formData,
           {
             headers: {
-              "Content-Type": "multipart/form-data",
+              
             },
           }
         );
