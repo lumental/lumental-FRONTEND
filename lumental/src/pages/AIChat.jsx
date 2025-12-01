@@ -144,7 +144,7 @@ export default function AIChat() {
 
         <div 
           style={{
-            height: 550,
+            height: 450,
             overflowY: "auto",
           }}
         >

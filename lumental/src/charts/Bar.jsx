@@ -7,7 +7,7 @@ export default function HRVBarChart({ data }) {
   return (
     <div>
       
-      <svg width="250" height="90" style={{margin: 0, padding: 0}}>
+      <svg width="150" height="90" style={{margin: 0, padding: 0}}>
         {data.map((item, idx) => {
           const barWidth = 12;
           const gap = 4;

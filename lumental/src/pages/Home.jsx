@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Circle from '../charts/Circle';
-import TinyBar from '../charts/Bar';
 import HRVBarChart from '../charts/Bar';
 import dummy from '../charts/dummy.json';
+import HeartRateGraph from '../charts/Rate';
+import TinyBarChart from '../charts/Bar2';
 /* eslint-disable */
 
 export default function Home() {
@@ -54,8 +55,9 @@ export default function Home() {
       console.log(res.data);
     };
 
-    const step = 5000;
-    const data = dummy.data.hrv.data;
+    const step = dummy.data.stepCount.total;
+    const hrv_data = dummy.data.hrv.data;
+    const rate_data = dummy.data.heartRate.data;
     
 
     
@@ -210,9 +212,15 @@ export default function Home() {
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
                     boxShadow: '0px 0px 10px rgba(255, 104, 84, 0.30)',
                     borderRadius: '23.4px',
+
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column'
                   }}
                 >
-                  
+                  <div style={{color: '#828282', fontSize: '14px'}}>심박수</div>
+                  <HeartRateGraph data={rate_data} height={70} />
                 </div>
 
                 <div
@@ -228,12 +236,13 @@ export default function Home() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
+                    
                   }}
                 >
-                  <div style={{ marginBottom: 0, paddingBottom: 0}}>HRV</div>
-                  <div style={{marginLeft: '80px', marginTop: 0, paddingTop: 0}}>
-                    <HRVBarChart data={data} />
+                  <div style={{color: '#828282', fontSize: '14px', marginBottom: "4px",}}>HRV</div>
+                  <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
+                    <TinyBarChart data={hrv_data} />
                   </div>
                   
                 </div>
@@ -258,10 +267,11 @@ export default function Home() {
                   flexDirection: 'column'
                 }}
               >
-                <div>걸음수</div>
+                <div style={{color: '#828282', fontSize: '14px'}}>걸음수</div>
                 <div>
                   <Circle steps={step} />
                 </div>
+                <div style={{color: '#FFB229', fontSize: 18}}>{step}</div>
               </div>
 
 
