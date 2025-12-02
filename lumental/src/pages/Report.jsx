@@ -32,9 +32,9 @@ export default function Report() {
         
         console.log(res.data);
 
-        setHrvData(res.data.hrv.data);
-        setHeartRate(res.data.heartRate.data);
-        setStepData(res.data.steps.data);
+        setHrvData(res.data.hrv?.data ?? []);
+        setHeartRate(res.data.heartRate?.data ?? []);
+        setStepData(res.data.steps?.data ?? []);
 
       } catch (error) {
         alert("에러 발생", error);
