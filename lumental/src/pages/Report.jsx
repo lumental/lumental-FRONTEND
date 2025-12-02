@@ -166,7 +166,7 @@ export default function Report() {
             </div>
            
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            raw!==null ? <Rate data={heartRate}/>
+            <Rate data={heartRate}/>
           </div>
           
         </div>
