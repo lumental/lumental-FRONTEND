@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"; 
-
-
 import sleep from '../assets/수면 그래프.png';
-
 import axios from "axios";
 import TinyBarChart from "../charts/Bar2";
 import HeartRateGraph from '../charts/Rate';
@@ -14,10 +11,11 @@ export default function Report() {
 
   useEffect(() => {
     const savedName = localStorage.getItem("name");
-    setName(savedName);
     const savedUserId = localStorage.getItem("userId");
+
+    setName(savedName);
     setId(parseInt(savedUserId));
-  });
+  }, []);
 
 
   const [hrvData, setHrvData] = useState([]);
@@ -26,24 +24,27 @@ export default function Report() {
 
   useEffect(() => {
     const getData = async () => {
-    try {
-      const api = import.meta.env.VITE_API_URL;
-      const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
+      if (!id) return;
+
+      try {
+        const api = import.meta.env.VITE_API_URL;
+        const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
+        
+        console.log(res.data);
+
+        setHrvData(res.data.hrv.data);
+        setHeartRate(res.data.heartRate.data);
+        setStepData(res.data.steps.data);
+
+      } catch (error) {
+        alert("에러 발생", error);
+      }
       
-      console.log(res.data);
+    };
 
-      setHrvData(res.data.hrv.data);
-      setHeartRate(res.data.heartRate.data);
-      setStepData(res.data.steps.data);
+    getData();
 
-    } catch (error) {
-      alert("에러 발생", error);
-    }
-    
-  };
-  getData();
-
-  }, []);
+  }, [id]);
 
   
 
