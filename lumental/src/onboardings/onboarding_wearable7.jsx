@@ -117,12 +117,12 @@ export default function OnboardingWearable() {
 
     const handleUpload = async () => {
       if (!file) {
-        alert("파일을 선택해주세요!");
+        alert("파일을 선택해주세요.");
         return;
       }
 
       if (!userId) {
-        alert("userId가 없습니다. 온보딩에서 userId 저장 확인!");
+        alert("userId가 없습니다.");
         return;
       }
 

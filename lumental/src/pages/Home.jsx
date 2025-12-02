@@ -32,12 +32,15 @@ export default function Home() {
 
   const [character, setCharacter] = useState("");
   const [name, setName] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     const savedCharacter = localStorage.getItem("character");
     const savedName = localStorage.getItem("name");
+    const savedUserId = localStorage.getItem("userId");
     setCharacter(savedCharacter);
     setName(savedName);
+    setId(parseInt(savedUserId));
 
   }, []);
 
@@ -46,18 +49,35 @@ export default function Home() {
     Navigate('/aichat');
   };
 
-  
-
-  
-    const getData = async () => {
+  useEffect(async () => {
+    try {
       const api = import.meta.env.VITE_API_URL;
-      const res = await axios.get(`${api}/test/biometric-report`);
+      const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
+      
       console.log(res.data);
-    };
 
-    const step = dummy.data.stepCount.total;
-    const hrv_data = dummy.data.hrv.data;
-    const rate_data = dummy.data.heartRate.data;
+    } catch (error) {
+      alert("에러 발생");
+    }
+  });
+
+
+  const getData = async () => {
+    try {
+      const api = import.meta.env.VITE_API_URL;
+      const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
+      
+      console.log(res.data);
+
+    } catch (error) {
+      alert("에러 발생");
+    }
+    
+  };
+
+  const step = dummy.data.stepCount.total;
+  const hrv_data = dummy.data.hrv.data;
+  const rate_data = dummy.data.heartRate.data;
     
 
     
