@@ -36,7 +36,7 @@ export default function Report() {
     setHrvData(getData?.hrv?.data ?? []);
     setHeartRate(getData?.heartRate?.data ?? []);
     setStepData(getData?.steps?.data ?? []);
-    setSleep(getData?.sleep?.segments ?? []);
+    /*setSleep(getData?.sleep?.segments ?? []);
 
     const stageToValue = {
       light: 1,
@@ -47,7 +47,7 @@ export default function Report() {
     // SleepGraph에 넣을 데이터 형태로 변환
     const sleepGraphData = sleep.segments.map(seg => ({
       value: stageToValue[seg.stage]
-    }));
+    }));*/
 
   }, []);
 
@@ -179,10 +179,10 @@ export default function Report() {
             
           }}
         >
-          <div style={{color: '#FF6854', fontSize: '14px', paddingBottom: 20}}>오늘의 수면</div>
+          {/*<div style={{color: '#2C34C4', fontSize: '14px', paddingBottom: 20}}>오늘의 수면</div>
           <div style={{alignItems: 'center', justifyContent: 'center'}}>
             <SleepGraph data={sleepGraphData} height={150} />
-          </div>
+          </div>*/}
         </div>
 
         <div
