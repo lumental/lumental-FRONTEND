@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from "react"; 
 import sleep from '../assets/수면 그래프.png';
 import axios from "axios";
@@ -23,6 +24,16 @@ export default function Report() {
   const [stepData, setStepData] = useState([]);
 
   useEffect(() => {
+    const getData = localStorage.getItem("healthSummary");
+    console.log(getData);
+    setHrvData(getData.data.hrv?.data ?? []);
+    setHeartRate(getData.heartRate?.data ?? []);
+    setStepData(getData.steps?.data ?? []);
+    //localStorage.setItem("healthSummary", JSON.stringify(res.data));
+
+  }, []);
+
+  /*useEffect(() => {
     const getData = async () => {
       if (!id) return;
 
@@ -48,7 +59,9 @@ export default function Report() {
 
     getData();
 
-  }, [id]);
+  }, [id]);*/
+
+  
 
   
 

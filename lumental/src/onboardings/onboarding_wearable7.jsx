@@ -147,8 +147,7 @@ export default function OnboardingWearable() {
             },
           }
         );
-
-        // 저장
+        
         localStorage.setItem("healthSummary", JSON.stringify(res.data));
 
         console.log("업로드 성공:", res.data);
