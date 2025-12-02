@@ -220,7 +220,18 @@ export default function Report() {
             justifyContent: 'center'
           }}
         >
-          <div style={{color: '#3384FF', fontSize: '14px', marginBottom: "4px", display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', width: '100%',}}>
+          <div 
+            style={{
+              color: '#3384FF', 
+              fontSize: '14px', 
+              marginBottom: "4px", 
+              display: 'flex', 
+              alignItems: 'flex-start', 
+              justifyContent: 'flex-start', 
+              width: '100%',
+              marginLeft: 10
+            }}
+          >
             혈중 산소
           </div>
           <div>

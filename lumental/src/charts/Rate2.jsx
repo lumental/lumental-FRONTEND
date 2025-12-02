@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-//리포트 페이지 심박수, hrv
 
 export default function HeartRateGraph({
   data,
@@ -29,34 +28,74 @@ export default function HeartRateGraph({
     return () => observer.disconnect();
   }, [width]);
 
+  // 데이터가 없을 경우에 대한 방어 코드
+  if (!data || data.length === 0) {
+    return <div style={{ width: width, height: height }}>데이터 없음</div>;
+  }
+
   const maxValue = Math.max(...data.map((d) => d.value));
   const minValue = Math.min(...data.map((d) => d.value));
 
-  const scaleY = (value) =>
-    height -
-    ((value - minValue) / (maxValue - minValue)) * (height - padding * 2) -
-    padding;
+  const scaleY = (value) => {
+    if (maxValue === minValue) return height / 2; // 값이 모두 같을 경우 중앙에 위치
+    return (
+      height -
+      ((value - minValue) / (maxValue - minValue)) * (height - padding * 2) -
+      padding
+    );
+  };
 
-  const gapX = realWidth / (data.length - 1);
+  // 데이터 포인트가 1개일 경우를 대비한 gapX 계산
+  const gapX = data.length > 1 ? realWidth / (data.length - 1) : 0;
 
   const points = data
     .map((item, idx) => `${idx * gapX},${scaleY(item.value)}`)
     .join(" ");
 
+  // --- 가로 그리드 선을 위한 값 계산 ---
+  const gridCount = 5; // 가로선을 몇 개 그릴지 설정 (예: 5개)
+  const gridValues = [];
+  if (maxValue !== minValue && gridCount > 1) {
+    const step = (maxValue - minValue) / (gridCount - 1);
+    for (let i = 0; i < gridCount; i++) {
+      gridValues.push(minValue + i * step);
+    }
+  } else if (gridCount > 0) {
+      // 최대값과 최소값이 같거나 데이터가 하나뿐인 경우 하나의 선만 그림
+      gridValues.push(minValue);
+  }
+  // ------------------------------------
+
   return (
     <div ref={containerRef} style={{ width: width }}>
       <svg width={realWidth} height={height}>
-        {/* ✔ 세로 회색선 추가 */}
-        {data.map((_, idx) => {
+        {/* ✔ 세로 회색선 (기존 코드 유지, padding 적용) */}
+        {data.length > 1 && data.map((_, idx) => {
           const x = idx * gapX;
           return (
             <line
-              key={`grid-${idx}`}
+              key={`v-grid-${idx}`}
               x1={x}
-              y1={5}
+              y1={padding}
               x2={x}
-              y2={height-5}
-              stroke="#ccc"
+              y2={height - padding}
+              stroke="#eee" // 조금 더 연한 회색으로 변경
+              strokeWidth="1"
+            />
+          );
+        })}
+
+        {/* ✔ 가로 회색선 추가 (새로 추가된 부분) */}
+        {gridValues.map((value, idx) => {
+          const y = scaleY(value);
+          return (
+            <line
+              key={`h-grid-${idx}`}
+              x1={0}
+              y1={y}
+              x2={realWidth}
+              y2={y}
+              stroke="#eee" // 세로선과 같은 연한 회색
               strokeWidth="1"
             />
           );
@@ -74,7 +113,9 @@ export default function HeartRateGraph({
         {data.map((item, idx) => {
           const x = idx * gapX;
           const y = scaleY(item.value);
-          return <circle key={idx} cx={x} cy={y} r={2} fill="#ff6f61" />;
+          // 데이터가 1개일 때는 중앙에 점을 찍음
+          const finalX = data.length > 1 ? x : realWidth / 2;
+          return <circle key={idx} cx={finalX} cy={y} r={2} fill="#ff6f61" />;
         })}
       </svg>
     </div>
