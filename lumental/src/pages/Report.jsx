@@ -19,16 +19,17 @@ export default function Report() {
     setId(parseInt(savedUserId));
   }, []);
 
-
+  const raw = localStorage.getItem("healthSummary");
   const [hrvData, setHrvData] = useState([]);
   const [heartRate, setHeartRate] = useState([]);
   const [stepData, setStepData] = useState([]);
   //const [sleep, setSleep] = useState([]);
+  const [report, setReport] = useState("");
 
 
 
   useEffect(() => {
-    const raw = localStorage.getItem("healthSummary");
+    
     console.log("raw:", raw);
 
     if (!raw) return; // 저장된 데이터가 없으면 바로 종료
@@ -39,7 +40,8 @@ export default function Report() {
     //setHrvData(getData?.hrv?.data ?? []);
     setHeartRate(getData?.heartRate?.data ?? []);
     setStepData(getData?.steps?.data ?? []);
-    setHrvData(getData?.hrv?.data ?? []);    
+    setHrvData(getData?.hrv?.data ?? []); 
+    setReport(getData?.llm?.summaryAdvice ?? "");   
 
 
     /*setSleep(getData?.sleep?.segments ?? []);
@@ -202,7 +204,7 @@ export default function Report() {
           
         </div>
 
-        <div
+        {/*<div
           style={{
             width: '100%',
             height: 360,
@@ -216,11 +218,14 @@ export default function Report() {
             
           }}
         >
-          {/*<div style={{color: '#2C34C4', fontSize: '14px', paddingBottom: 20}}>오늘의 수면</div>
+          
+
+
+          <div style={{color: '#2C34C4', fontSize: '14px', paddingBottom: 20}}>오늘의 수면</div>
           <div style={{alignItems: 'center', justifyContent: 'center'}}>
             <SleepGraph data={sleepGraphData} height={150} />
-          </div>*/}
-        </div>
+          </div>
+        </div>*/}
 
         <div
           style={{
@@ -291,6 +296,41 @@ export default function Report() {
         <div
           style={{
             width: '100%',
+            height: 360,
+            background: 'white',
+            boxShadow: '0px 0px 20px rgba(95, 103, 255, 0.30)',
+            borderRadius: 28,
+            border:'0.5px solid rgba(95, 103, 255, 0.30)',
+            marginTop: 20,
+            display: 'flex',
+            flexDirection: 'column',
+            
+          }}
+        >
+          <div 
+            style={{
+              color: '#2C34C4', 
+              fontSize: '14px', 
+              marginBottom: "4px", 
+              display: 'flex', 
+              alignItems: 'flex-start', 
+              justifyContent: 'flex-start', 
+              width: '100%',
+              marginLeft: 20
+            }}
+          >
+            생체 리포트 분석
+          </div>
+          <div>{report}</div>
+          
+
+
+          
+        </div>
+
+        {/*<div
+          style={{
+            width: '100%',
             height: 120,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(178, 251, 162, 0.40)',
@@ -298,7 +338,7 @@ export default function Report() {
             border:'0.5px solid rgba(178, 251, 162, 0.40)',
             marginTop: 20
           }}
-        ></div>
+        ></div>*/}
         
       </div>
 
