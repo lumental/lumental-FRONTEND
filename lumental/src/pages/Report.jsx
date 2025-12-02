@@ -35,10 +35,10 @@ export default function Report() {
     const getData = JSON.parse(raw);
     console.log("parsed:", getData);
 //localStorage.setItem("healthSummary", JSON.stringify(res.data));
-    setHrvData(getData?.hrv?.data ?? []);
+    //setHrvData(getData?.hrv?.data ?? []);
     setHeartRate(getData?.heartRate?.data ?? []);
-    //setStepData(getData?.steps?.data ?? []);
-    const hrv = parsed?.hrv?.data ?? [];
+    setStepData(getData?.steps?.data ?? []);
+    const hrv = getData?.hrv?.data ?? [];
 
     const [options, setOptions] = useState({
       chart: { type: "line" },
