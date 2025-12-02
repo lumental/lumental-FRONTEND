@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react"; 
 import sleep from '../assets/수면 그래프.png';
 import axios from "axios";
-import TinyBarChart from "../charts/Bar2";
+import TinyBarChart from "../charts/Bar3";
 import HeartRateGraph from '../charts/Rate';
+import TinyBarChart2 from "../charts/Bar4";
 
 export default function Report() {
   
@@ -31,44 +32,14 @@ export default function Report() {
 
     const getData = JSON.parse(raw);
     console.log("parsed:", getData);
-
+//localStorage.setItem("healthSummary", JSON.stringify(res.data));
     setHrvData(getData?.hrv?.data ?? []);
     setHeartRate(getData?.heartRate?.data ?? []);
     setStepData(getData?.steps?.data ?? []);
 
   }, []);
 
-  /*useEffect(() => {
-    const getData = async () => {
-      if (!id) return;
 
-      try {
-        const api = import.meta.env.VITE_API_URL;
-        const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
-        
-        console.log(res.data);
-
-        setHrvData(res.data.hrv?.data ?? []);
-        setHeartRate(res.data.heartRate?.data ?? []);
-        setStepData(res.data.steps?.data ?? []);
-
-      } catch (error) {
-        if (error.response && error.response.status === 500) {
-          console.log("500 Internal Server Error:", error.response.data);
-        } else {
-          console.log("다른 에러 400:", error.response.data);
-        }
-      }
-      
-    };
-
-    getData();
-
-  }, [id]);*/
-
-  
-
-  
 
   return (
     <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',  
@@ -151,11 +122,12 @@ export default function Report() {
             border:'0.5px solid rgba(255, 104, 84, 0.30)',
             marginTop: 40,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
           }}
         >
-          <div style={{color: '#828282', fontSize: '14px'}}>심박수</div>
+          <div style={{color: '#FF6854', fontSize: '14px', paddingBottom: 20}}>오늘의 심박수</div>
           <HeartRateGraph data={heartRate} height={70} />
         </div>
 
@@ -169,11 +141,12 @@ export default function Report() {
             border:'0.5px solid rgba(255, 104, 84, 0.30)',
             marginTop: 20,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
           }}
         >
-          <div style={{color: '#828282', fontSize: '14px', marginBottom: "4px",}}>HRV</div>
+          <div style={{color: '#FF6854', fontSize: '14px', marginBottom: "4px",}}>HRV</div>
           <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
               <TinyBarChart data={hrvData} />
           </div>
@@ -189,6 +162,7 @@ export default function Report() {
             border:'0.5px solid rgba(95, 103, 255, 0.30)',
             marginTop: 20,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
           }}
@@ -206,13 +180,14 @@ export default function Report() {
             border:'0.5px solid rgba(255, 178, 41, 0.30)',
             marginTop: 20,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
           }}
         >
-          <div style={{color: '#828282', fontSize: '14px', marginBottom: "4px",}}>걸음수</div>
+          <div style={{color: '#FFAC19', fontSize: '14px', marginBottom: "4px",}}>오늘의 활동량</div>
           <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
-              <TinyBarChart data={stepData} />
+              <TinyBarChart2 data={stepData} />
           </div>
         </div>
 
