@@ -241,14 +241,12 @@ export default function Report() {
                 color: '#FFAC19', 
                 fontSize: '14px', 
                 marginBottom: "4px", 
-                display: 'flex', 
-                alignItems: 'flex-start', 
-                justifyContent: 'flex-start', 
+                
                 width: '100%',
                 marginLeft: 20
             }}
           >오늘의 활동량</div>
-          <div style={{width: '95%',height: '100px', display: 'flex', }}>
+          <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <TinyBarChart2 data={stepData} />
           </div>
         </div>

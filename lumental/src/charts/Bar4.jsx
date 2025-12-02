@@ -3,7 +3,7 @@ import { BarChart, Bar, CartesianGrid, YAxis } from 'recharts';
 const TinyBarChart2 = ({ data }) => {
   return (
     <BarChart
-      style={{ width: '100%', maxWidth: '300px', maxHeight: '200px', aspectRatio: 1.618, margin: 0, height: 150 }}
+      style={{ width: '100%', height: '150px', aspectRatio: 1.618, margin: 0,  }}
       responsive
       data={data}
     >
