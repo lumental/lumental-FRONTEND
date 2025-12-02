@@ -4,6 +4,8 @@ import axios from "axios";
 import HeartRateGraph from '../charts/Rate';
 import TinyBarChart2 from "../charts/Bar4";
 import SleepGraph from "../charts/SleepGraph";
+import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts";
 
 export default function Report() {
   
@@ -35,8 +37,27 @@ export default function Report() {
 //localStorage.setItem("healthSummary", JSON.stringify(res.data));
     setHrvData(getData?.hrv?.data ?? []);
     setHeartRate(getData?.heartRate?.data ?? []);
-    setStepData(getData?.steps?.data ?? []);
+    //setStepData(getData?.steps?.data ?? []);
+    const hrv = parsed?.hrv?.data ?? [];
+
+    const [options, setOptions] = useState({
+      chart: { type: "line" },
+      title: { text: "hrv", align: "left" },
+      series: [{ data: [] }],
+    });
+
+    setOptions((prev) => ({
+        ...prev,
+        series: [{ data: hrv }],
+      })
+    );
+    
+
+
+
     /*setSleep(getData?.sleep?.segments ?? []);
+
+    
 
     const stageToValue = {
       light: 1,
@@ -160,8 +181,11 @@ export default function Report() {
           }}
         >
           <div style={{color: '#FF6854', fontSize: '14px', marginBottom: "4px",}}>HRV</div>
-          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          {/*<div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <HeartRateGraph data={hrvData} height={150} />
+          </div>*/}
+          <div id="chart-container">
+            <HighchartsReact highcharts={Highcharts} options={options} />
           </div>
         </div>
 
