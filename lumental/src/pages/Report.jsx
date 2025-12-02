@@ -1,8 +1,6 @@
 /* eslint-disable */
 import { useEffect, useState } from "react"; 
-import sleep from '../assets/수면 그래프.png';
 import axios from "axios";
-import TinyBarChart from "../charts/Bar3";
 import HeartRateGraph from '../charts/Rate';
 import TinyBarChart2 from "../charts/Bar4";
 import SleepGraph from "../charts/SleepGraph";
