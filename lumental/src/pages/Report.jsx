@@ -304,7 +304,8 @@ export default function Report() {
             marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
-            
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
           <div 
@@ -317,13 +318,14 @@ export default function Report() {
               justifyContent: 'flex-start', 
               width: '100%',
               marginLeft: 20,
-              alignItems: 'center',
-              ustifyContent: 'center'
+              marginTop: 20
             }}
           >
             생체 리포트 분석
           </div>
-          <div style={{width: '90%', letterSpacing: "1px", fontSize: 18}}>{report}</div>
+          <div style={{width: '90%', letterSpacing: "1px", fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            {report}
+          </div>
           
 
 
