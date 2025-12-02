@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Circle from '../charts/Circle';
-import HRVBarChart from '../charts/Bar';
 import dummy from '../charts/dummy.json';
 import HeartRateGraph from '../charts/Rate';
 import TinyBarChart from '../charts/Bar2';
