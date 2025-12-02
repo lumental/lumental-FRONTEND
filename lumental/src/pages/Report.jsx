@@ -37,7 +37,11 @@ export default function Report() {
         setStepData(res.data.steps?.data ?? []);
 
       } catch (error) {
-        alert("에러 발생", error);
+        if (error.response && error.response.status === 500) {
+          console.log("500 Internal Server Error:", error.response.data);
+        } else {
+          console.log("다른 에러 400:", error.response.data);
+        }
       }
       
     };
