@@ -53,10 +53,10 @@ export default function HeartRateGraph({
             <line
               key={`grid-${idx}`}
               x1={x}
-              y1={0}
+              y1={5}
               x2={x}
-              y2={height}
-              stroke="#ddd"
+              y2={height-5}
+              stroke="#ccc"
               strokeWidth="1"
             />
           );
