@@ -1,17 +1,51 @@
 import { useEffect, useState } from "react"; 
-import hrv from '../assets/hrv 그래프.png';
-import step from '../assets/걸음수 그래프.png';
+
+
 import sleep from '../assets/수면 그래프.png';
-import heartrate from '../assets/심박수 그래프.png';
+
+import axios from "axios";
+import TinyBarChart from "../charts/Bar2";
+import HeartRateGraph from '../charts/Rate';
 
 export default function Report() {
   
   const [name, setName] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     const savedName = localStorage.getItem("name");
     setName(savedName);
+    const savedUserId = localStorage.getItem("userId");
+    setId(parseInt(savedUserId));
   });
+
+
+  const [hrvData, setHrvData] = useState([]);
+  const [heartRate, setHeartRate] = useState([]);
+  const [stepData, setStepData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+    try {
+      const api = import.meta.env.VITE_API_URL;
+      const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
+      
+      console.log(res.data);
+
+      setHrvData(res.data.hrv.data);
+      setHeartRate(res.data.heartRate.data);
+      setStepData(res.data.steps.data);
+
+    } catch (error) {
+      alert("에러 발생", error);
+    }
+    
+  };
+  getData();
+
+  }, []);
+
+  
 
   return (
     <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',  
@@ -98,7 +132,8 @@ export default function Report() {
             justifyContent: 'center'
           }}
         >
-          <img style={{width: '90%', height: '90%'}} src={heartrate} alt="심박수 그래프" />
+          <div style={{color: '#828282', fontSize: '14px'}}>심박수</div>
+          <HeartRateGraph data={heartRate} height={70} />
         </div>
 
         <div
@@ -115,7 +150,10 @@ export default function Report() {
             justifyContent: 'center'
           }}
         >
-          <img style={{width: '90%', height: '90%'}} src={hrv} alt="hrv 그래프" />
+          <div style={{color: '#828282', fontSize: '14px', marginBottom: "4px",}}>HRV</div>
+          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
+              <TinyBarChart data={hrvData} />
+          </div>
         </div>
 
         <div
@@ -149,7 +187,10 @@ export default function Report() {
             justifyContent: 'center'
           }}
         >
-          <img style={{width: '95%', height: '95%'}} src={step} alt="활동량 그래프" />
+          <div style={{color: '#828282', fontSize: '14px', marginBottom: "4px",}}>걸음수</div>
+          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
+              <TinyBarChart data={stepData} />
+          </div>
         </div>
 
         <div
