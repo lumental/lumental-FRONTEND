@@ -62,8 +62,10 @@ export default function Home() {
           alert("에러 발생");
         }
       }
-    }
-  });
+    };
+    fetchData();
+
+  }, [id]);
 
 
   const getData = async () => {
