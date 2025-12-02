@@ -49,15 +49,19 @@ export default function Home() {
     Navigate('/aichat');
   };
 
-  useEffect(async () => {
-    try {
-      const api = import.meta.env.VITE_API_URL;
-      const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
-      
-      console.log(res.data);
+  useEffect(() => {
+    const fetchData = () => {
+      async () => {
+        try {
+          const api = import.meta.env.VITE_API_URL;
+          const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
+          
+          console.log(res.data);
 
-    } catch (error) {
-      alert("에러 발생");
+        } catch (error) {
+          alert("에러 발생");
+        }
+      }
     }
   });
 
