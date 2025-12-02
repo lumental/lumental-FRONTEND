@@ -6,6 +6,7 @@ import TinyBarChart2 from "../charts/Bar4";
 import SleepGraph from "../charts/SleepGraph";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
+import Rate from "../charts/Rate2";
 
 export default function Report() {
   
@@ -165,7 +166,8 @@ export default function Report() {
         >
           <div style={{color: '#FF6854', fontSize: '14px', paddingBottom: 20}}>오늘의 심박수</div>
           <div style={{alignItems: 'center', justifyContent: 'center'}}>
-            <HeartRateGraph data={heartRate} height={150} />
+            {/*<HeartRateGraph data={heartRate} height={150} />*/}
+            <Rate data={heartRate}/>
           </div>
           
         </div>
