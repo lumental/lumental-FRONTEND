@@ -296,7 +296,7 @@ export default function Report() {
         <div
           style={{
             width: '100%',
-            height: 360,
+            height: 300,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(95, 103, 255, 0.30)',
             borderRadius: 28,
@@ -316,12 +316,14 @@ export default function Report() {
               alignItems: 'flex-start', 
               justifyContent: 'flex-start', 
               width: '100%',
-              marginLeft: 20
+              marginLeft: 20,
+              alignItems: 'center',
+              ustifyContent: 'center'
             }}
           >
             생체 리포트 분석
           </div>
-          <div>{report}</div>
+          <div style={{width: '90%', letterSpacing: "1px", fontSize: 18}}>{report}</div>
           
 
 
