@@ -195,7 +195,7 @@ export default function Report() {
             }}
           >HRV
           </div>*/}
-          <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{width: '90%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <Rate data={hrvData} />
           </div>
           
@@ -232,7 +232,8 @@ export default function Report() {
             marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
-            
+            justifyContent: 'center', 
+            alignItems: 'center'
           }}
         >
           <div 
@@ -247,7 +248,7 @@ export default function Report() {
                 marginLeft: 20
             }}
           >오늘의 활동량</div>
-          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{width: '95%',height: '100px', display: 'flex', }}>
               <TinyBarChart2 data={stepData} />
           </div>
         </div>
