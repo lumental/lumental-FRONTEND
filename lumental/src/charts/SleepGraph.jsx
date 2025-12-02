@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 //리포트 페이지 심박수, hrv
 
-export default function HeartRateGraph({
+export default function SleepGraph({
   data,
   width = "90%",
   height = 100,
@@ -65,7 +65,7 @@ export default function HeartRateGraph({
         <polyline
           points={points}
           fill="none"
-          stroke="#ff6f61"
+          stroke="#2C34C4"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -74,7 +74,7 @@ export default function HeartRateGraph({
         {data.map((item, idx) => {
           const x = idx * gapX;
           const y = scaleY(item.value);
-          return <circle key={idx} cx={x} cy={y} r={2} fill="#ff6f61" />;
+          return <circle key={idx} cx={x} cy={y} r={2} fill="#2C34C4" />;
         })}
       </svg>
     </div>

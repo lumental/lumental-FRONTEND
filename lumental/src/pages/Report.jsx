@@ -5,6 +5,7 @@ import axios from "axios";
 import TinyBarChart from "../charts/Bar3";
 import HeartRateGraph from '../charts/Rate';
 import TinyBarChart2 from "../charts/Bar4";
+import SleepGraph from "../charts/SleepGraph";
 
 export default function Report() {
   
@@ -23,6 +24,7 @@ export default function Report() {
   const [hrvData, setHrvData] = useState([]);
   const [heartRate, setHeartRate] = useState([]);
   const [stepData, setStepData] = useState([]);
+  const [sleep, setSleep] = useState([]);
 
   useEffect(() => {
     const raw = localStorage.getItem("healthSummary");
@@ -36,6 +38,18 @@ export default function Report() {
     setHrvData(getData?.hrv?.data ?? []);
     setHeartRate(getData?.heartRate?.data ?? []);
     setStepData(getData?.steps?.data ?? []);
+    setSleep(getData?.sleep?.segments ?? []);
+
+    const stageToValue = {
+      light: 1,
+      rem: 2,
+      deep: 3,
+    };
+
+    // SleepGraph에 넣을 데이터 형태로 변환
+    const sleepGraphData = sleep.segments.map(seg => ({
+      value: stageToValue[seg.stage]
+    }));
 
   }, []);
 
@@ -123,12 +137,14 @@ export default function Report() {
             marginTop: 40,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center'
+            
           }}
         >
           <div style={{color: '#FF6854', fontSize: '14px', paddingBottom: 20}}>오늘의 심박수</div>
-          <HeartRateGraph data={heartRate} height={70} />
+          <div style={{alignItems: 'center', justifyContent: 'center'}}>
+            <HeartRateGraph data={heartRate} height={150} />
+          </div>
+          
         </div>
 
         <div
@@ -142,13 +158,12 @@ export default function Report() {
             marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center'
+            
           }}
         >
           <div style={{color: '#FF6854', fontSize: '14px', marginBottom: "4px",}}>HRV</div>
-          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
-              <TinyBarChart data={hrvData} />
+          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <HeartRateGraph data={hrvData} height={150} />
           </div>
         </div>
 
@@ -163,11 +178,13 @@ export default function Report() {
             marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center'
+            
           }}
         >
-          <img style={{width: '95%', height: '100%'}} src={sleep} alt="수면 그래프" />
+          <div style={{color: '#FF6854', fontSize: '14px', paddingBottom: 20}}>오늘의 수면</div>
+          <div style={{alignItems: 'center', justifyContent: 'center'}}>
+            <SleepGraph data={sleepGraphData} height={150} />
+          </div>
         </div>
 
         <div
@@ -181,12 +198,11 @@ export default function Report() {
             marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center'
+            
           }}
         >
           <div style={{color: '#FFAC19', fontSize: '14px', marginBottom: "4px",}}>오늘의 활동량</div>
-          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
+          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <TinyBarChart2 data={stepData} />
           </div>
         </div>
@@ -199,9 +215,18 @@ export default function Report() {
             boxShadow: '0px 0px 20px rgba(87, 154, 255, 0.40)',
             borderRadius: 28,
             border:'0.5px solid rgba(87, 154, 255, 0.40)',
-            marginTop: 20
+            marginTop: 20,
+            display: 'flex',
+            flexDirection: 'column',
           }}
-        ></div>
+        >
+          <div style={{color: '#3384FF', fontSize: '14px', marginBottom: "4px",}}>오늘의 활동량</div>
+          <div>
+            {hrvData !== null && (
+              <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
+            )}
+          </div>
+        </div>
 
         <div
           style={{
