@@ -158,7 +158,8 @@ export default function Report() {
                 alignItems: 'flex-start', 
                 justifyContent: 'flex-start', 
                 width: '100%',
-                marginLeft: 20
+                marginLeft: 20,
+                marginBottom: 10
             }}
           >
             오늘의 심박수
@@ -194,11 +195,12 @@ export default function Report() {
                 alignItems: 'flex-start', 
                 justifyContent: 'flex-start', 
                 width: '100%',
-                marginLeft: 20
+                marginLeft: 20,
+                marginBottom: 10
             }}
           >HRV
           </div>
-          <div style={{width: '90%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <Rate data={hrvData} />
           </div>
           
@@ -297,7 +299,7 @@ export default function Report() {
         <div
           style={{
             width: '100%',
-            height: 300,
+            height: 200,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(95, 103, 255, 0.30)',
             borderRadius: 28,

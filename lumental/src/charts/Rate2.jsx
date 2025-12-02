@@ -6,7 +6,7 @@ import { Line, LineChart, CartesianGrid, YAxis } from 'recharts';
 export default function Rate({data}) {
   return (
     <LineChart
-      style={{ width: '90%', maxWidth: '300px', maxHeight: '150px', aspectRatio: 1.618 }}
+      style={{ width: '100%', maxWidth: '300px', maxHeight: '150px', aspectRatio: 1.618 }}
       responsive
       data={data}
     >
