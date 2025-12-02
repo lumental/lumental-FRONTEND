@@ -220,7 +220,9 @@ export default function Report() {
             justifyContent: 'center'
           }}
         >
-          <div style={{color: '#3384FF', fontSize: '14px', marginBottom: "4px",}}>혈중 산소</div>
+          <div style={{color: '#3384FF', fontSize: '14px', marginBottom: "4px", display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start', width: '100%',}}>
+            혈중 산소
+          </div>
           <div>
             {hrvData !== null && (
               <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
