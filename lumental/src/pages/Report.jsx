@@ -24,12 +24,17 @@ export default function Report() {
   const [stepData, setStepData] = useState([]);
 
   useEffect(() => {
-    const getData = localStorage.getItem("healthSummary");
-    console.log(getData);
-    setHrvData(getData.data.hrv?.data ?? []);
-    setHeartRate(getData.heartRate?.data ?? []);
-    setStepData(getData.steps?.data ?? []);
-    //localStorage.setItem("healthSummary", JSON.stringify(res.data));
+    const raw = localStorage.getItem("healthSummary");
+    console.log("raw:", raw);
+
+    if (!raw) return; // 저장된 데이터가 없으면 바로 종료
+
+    const getData = JSON.parse(raw);
+    console.log("parsed:", getData);
+
+    setHrvData(getData?.hrv?.data ?? []);
+    setHeartRate(getData?.heartRate?.data ?? []);
+    setStepData(getData?.steps?.data ?? []);
 
   }, []);
 
