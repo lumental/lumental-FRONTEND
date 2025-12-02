@@ -5,7 +5,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 export default function Rate({data}) {
   return (
     <LineChart
-      style={{ width: '100%', maxWidth: '700px', height: '100%', maxHeight: '70vh', aspectRatio: 1.618 }}
+      style={{ width: '90%', maxWidth: '700px', height: '90%', maxHeight: '70vh', aspectRatio: 1.618 }}
       responsive
       data={data}
       margin={{
