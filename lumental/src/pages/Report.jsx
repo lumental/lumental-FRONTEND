@@ -149,7 +149,7 @@ export default function Report() {
             alignItems: 'center'
           }}
         >
-          {/*<div 
+          <div 
             style={{
                 color: '#FF6854', 
                 fontSize: '14px', 
@@ -162,7 +162,7 @@ export default function Report() {
             }}
           >
             오늘의 심박수
-            </div>*/}
+            </div>
            
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Rate data={heartRate}/>
@@ -185,7 +185,7 @@ export default function Report() {
             alignItems: 'center'
           }}
         >
-          {/*<div 
+          <div 
             style={{
                 color: '#FF6854', 
                 fontSize: '14px', 
@@ -197,7 +197,7 @@ export default function Report() {
                 marginLeft: 20
             }}
           >HRV
-          </div>*/}
+          </div>
           <div style={{width: '90%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <Rate data={hrvData} />
           </div>
@@ -246,10 +246,11 @@ export default function Report() {
             style={{
                 color: '#FFAC19', 
                 fontSize: '14px', 
-                marginBottom: "4px", 
+                marginBottom: "10px", 
                 
                 width: '100%',
-                marginLeft: 20
+                marginLeft: 20,
+                
             }}
           >오늘의 활동량</div>
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -318,12 +319,13 @@ export default function Report() {
               justifyContent: 'flex-start', 
               width: '100%',
               marginLeft: 20,
-              marginTop: 20
+              marginTop: 20,
+              marginBottom: 10
             }}
           >
             생체 리포트 분석
           </div>
-          <div style={{width: '90%', letterSpacing: "1px", fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{width: '90%', letterSpacing: "1.4px", fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             {report}
           </div>
           
