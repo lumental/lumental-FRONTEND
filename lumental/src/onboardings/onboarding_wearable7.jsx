@@ -138,7 +138,7 @@ export default function OnboardingWearable() {
         }
 
         const res = await axios.post(
-          `${api}/api/biometric/upload/{userId}`,
+          `${api}/api/biometric/upload/${userId}`,
           formData,
           {
             headers: {
