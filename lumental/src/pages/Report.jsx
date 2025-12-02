@@ -166,7 +166,7 @@ export default function Report() {
             </div>
            
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <Rate data={heartRate}/>
+            {raw!==null ? <Rate data={heartRate}/> : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>}
           </div>
           
         </div>
@@ -201,7 +201,7 @@ export default function Report() {
           >HRV
           </div>
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              <Rate data={hrvData} />
+              {raw!==null ? <Rate data={hrvData} /> : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>}
           </div>
           
         </div>
@@ -256,7 +256,9 @@ export default function Report() {
             }}
           >오늘의 활동량</div>
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              <TinyBarChart2 data={stepData} />
+              
+              {raw!==null ? <TinyBarChart2 data={stepData} /> : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>}
+              
           </div>
         </div>
 
@@ -328,7 +330,8 @@ export default function Report() {
             생체 리포트 분석
           </div>
           <div style={{width: '90%', letterSpacing: "1.4px", fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            {report}
+            
+            {raw!==null ? {report}: <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>}
           </div>
           
 
