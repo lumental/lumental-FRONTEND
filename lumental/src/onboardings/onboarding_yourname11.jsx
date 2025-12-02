@@ -29,11 +29,11 @@ export default function OnboardingYourname() {
       localStorage.setItem("userId", userId);
 
       localStorage.setItem("hasSeenOnboarding", "true");
-      navigate("/home");
+      navigate("/onboarding_wearable12");
       
     } catch (error) {
       console.error("POST 에러: ", error);
-      navigate("/home");
+      navigate("/onboarding_wearable12");
     }
     };
 

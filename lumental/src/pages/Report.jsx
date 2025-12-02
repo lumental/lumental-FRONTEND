@@ -161,6 +161,7 @@ export default function Report() {
           >
             오늘의 심박수
             </div>*/}
+           
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Rate data={heartRate}/>
           </div>
@@ -281,7 +282,7 @@ export default function Report() {
             혈중 산소
           </div>
           <div>
-            {hrvData !== null && (
+            {hrvData && (
               <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
             )}
           </div>

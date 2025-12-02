@@ -12,54 +12,12 @@ export default function OnboardingWearable() {
     // 로컬 스토리지에 '봤음' 표시
     localStorage.setItem("hasSeenOnboarding", "true");
     
-    navigate("/onboarding_calendar8");
+    navigate("/home");
     };
 
     
 
-    useEffect(() => {
-      const code = new URL(window.location.href).searchParams.get("code");
-
-      if (!code) return;
-
-      const getKakaoAccessToken = async () => {
-        try {
-          const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_KEY;
-          const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT;
-          
-          const params = new URLSearchParams();
-          params.append("grant_type", "authorization_code");
-          params.append("client_id", REST_API_KEY);
-          params.append("redirect_uri", REDIRECT_URI);
-          params.append("code", code);
-
-          const response = await axios.post(
-            "https://kauth.kakao.com/oauth/token", 
-            params,
-            
-            {
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-            }
-          );
-
-          const accessToken = response.data.access_token;
-          console.log("카카오 Access Token:", accessToken);
-
-          const api = import.meta.env.VITE_API_URL;
-          await axios.post(`${api}/auth/login/social`, {
-            provider: "kakao",
-            token: accessToken,
-          });
-
-        } catch (error) {
-          console.error("카카오 로그인 처리 중 오류:", error);
-        }
-      };
-
-      getKakaoAccessToken();
-    }, []);
+    
   
     const [file, setFile] = useState(null);
 
@@ -207,6 +165,17 @@ export default function OnboardingWearable() {
               
               >
                   다음
+              </button>
+          </div>
+
+          <div style={{paddingTop: 10}}>
+              <button 
+              onClick= {handleFinishOnboarding}
+              className="Next"
+              
+              
+              >
+                  파일 업로드 다음에 하기
               </button>
           </div>
           
