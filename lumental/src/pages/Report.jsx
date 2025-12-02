@@ -161,7 +161,7 @@ export default function Report() {
           >
             오늘의 심박수
             </div>*/}
-          <div style={{width: '100%',height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Rate data={heartRate}/>
           </div>
           
@@ -195,7 +195,7 @@ export default function Report() {
             }}
           >HRV
           </div>*/}
-          <div style={{width: '100%',height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <Rate data={hrvData} />
           </div>
           
