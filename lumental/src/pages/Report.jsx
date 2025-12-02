@@ -24,7 +24,13 @@ export default function Report() {
   const [hrvData, setHrvData] = useState([]);
   const [heartRate, setHeartRate] = useState([]);
   const [stepData, setStepData] = useState([]);
-  const [sleep, setSleep] = useState([]);
+  //const [sleep, setSleep] = useState([]);
+
+  const [options, setOptions] = useState({
+    chart: { type: "line" },
+    title: { text: "hrv", align: "left" },
+    series: [{ data: [] }],
+  });
 
   useEffect(() => {
     const raw = localStorage.getItem("healthSummary");
@@ -40,17 +46,15 @@ export default function Report() {
     setStepData(getData?.steps?.data ?? []);
     const hrv = getData?.hrv?.data ?? [];
 
-    const [options, setOptions] = useState({
-      chart: { type: "line" },
-      title: { text: "hrv", align: "left" },
-      series: [{ data: [] }],
-    });
+    
 
     setOptions((prev) => ({
         ...prev,
         series: [{ data: hrv }],
       })
     );
+
+    
     
 
 
