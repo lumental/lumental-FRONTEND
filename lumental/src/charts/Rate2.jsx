@@ -24,7 +24,7 @@ export default function Rate({data}) {
         tickLine={false}
       />
 
-      <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} />
+      <Line type="monotone" dataKey="value" stroke="#FF6854" strokeWidth={2} />
     </LineChart>
   );
 }

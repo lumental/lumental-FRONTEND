@@ -163,7 +163,7 @@ export default function Report() {
             alignItems: 'center'
           }}
         >
-          <div 
+          {/*<div 
             style={{
                 color: '#FF6854', 
                 fontSize: '14px', 
@@ -176,7 +176,7 @@ export default function Report() {
             }}
           >
             오늘의 심박수
-            </div>
+            </div>*/}
           <div style={{alignItems: 'center', justifyContent: 'center'}}>
             {/*<HeartRateGraph data={heartRate} height={150} />*/}
             <Rate data={heartRate}/>
@@ -199,7 +199,7 @@ export default function Report() {
             alignItems: 'center'
           }}
         >
-          <div 
+          {/*<div 
             style={{
                 color: '#FF6854', 
                 fontSize: '14px', 
@@ -211,8 +211,8 @@ export default function Report() {
                 marginLeft: 20
             }}
           >HRV
-          </div>
-          <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          </div>*/}
+          <div style={{width: '100%',height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <Rate data={hrvData} />
           </div>
           
