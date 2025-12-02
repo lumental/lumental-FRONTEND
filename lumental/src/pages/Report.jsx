@@ -216,9 +216,11 @@ export default function Report() {
             marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
-          <div style={{color: '#3384FF', fontSize: '14px', marginBottom: "4px",}}>오늘의 활동량</div>
+          <div style={{color: '#3384FF', fontSize: '14px', marginBottom: "4px",}}>혈중 산소</div>
           <div>
             {hrvData !== null && (
               <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
