@@ -1,7 +1,7 @@
 import calendar from '../assets/온보딩_캘린더.png';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 
 export default function OnboardingCalendar() {
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function OnboardingCalendar() {
     
           if (!code) return;
     
-          /*const getKakaoAccessToken = async () => {
+          const getKakaoAccessToken = async () => {
             try {
               const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_KEY;
               const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT;
@@ -54,7 +54,7 @@ export default function OnboardingCalendar() {
             }
           };
     
-          getKakaoAccessToken();*/
+          getKakaoAccessToken();
         }, []);
 
   return (

@@ -15,10 +15,6 @@ export default function OnboardingWearable() {
     navigate("/home");
     };
 
-    
-
-    
-  
     const [file, setFile] = useState(null);
 
     const onChangeFile = (e) => {
