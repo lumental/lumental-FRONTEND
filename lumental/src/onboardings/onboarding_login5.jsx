@@ -23,8 +23,11 @@ export default function OnboardingLogin() {
 
     const kakaologin = () => {
       window.location.href = kakaoURL
-
     };
+
+    console.log("REST:", REST_API_KEY);
+    console.log("REDIRECT:", REDIRECT_URI);
+    console.log("LOGIN URL:", kakaoURL);
 
   return (
     <main style={{ 
