@@ -86,7 +86,6 @@ export default function OnboardingWearable() {
         formData.append("date", new Date().toISOString().slice(0, 10));
         formData.append("file", file);
 
-        // formData 내용 확인
         for (let pair of formData.entries()) {
           console.log(pair[0] + ": ", pair[1]);
         }
@@ -96,8 +95,7 @@ export default function OnboardingWearable() {
           formData,
           {
             headers: {
-              // ❗절대로 Content-Type 넣지 말기
-              // Axios가 boundary 자동 설정해야 multipart 정상작동
+             
             },
           }
         );

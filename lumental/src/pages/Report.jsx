@@ -19,7 +19,7 @@ export default function Report() {
     setId(parseInt(savedUserId));
   }, []);
 
-  const raw = localStorage.getItem("healthSummary");
+  const raw = localStorage.getItem("healthSummary") || "{}";
   const [hrvData, setHrvData] = useState([]);
   const [heartRate, setHeartRate] = useState([]);
   const [stepData, setStepData] = useState([]);
@@ -166,7 +166,12 @@ export default function Report() {
             </div>
            
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <Rate data={heartRate}/>
+            {/*{heartRate?.length > 0 && <Rate data={heartRate}/>}*/}
+            {
+              heartRate?.length > 0 
+                ? <Rate data={heartRate} />
+                : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
+            }
           </div>
           
         </div>
@@ -201,7 +206,12 @@ export default function Report() {
           >HRV
           </div>
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              <Rate data={hrvData} />
+              {/*<Rate data={hrvData} />*/}
+              {
+                hrvData?.length > 0 
+                  ? <Rate data={hrvData} />
+                  : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
+              }
           </div>
           
         </div>
@@ -257,7 +267,12 @@ export default function Report() {
           >오늘의 활동량</div>
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               
-            <TinyBarChart2 data={stepData} /> 
+            {/*<TinyBarChart2 data={stepData} /> */}
+            {
+              stepData?.length > 0 
+                ? <TinyBarChart2 data={stepData} /> 
+                : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
+            }
               
           </div>
         </div>
@@ -332,7 +347,12 @@ export default function Report() {
           </div>
           <div style={{width: '90%', letterSpacing: "1.4px", fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             
-            {report}
+            {
+              hrvData?.length > 0 
+                ? {report}
+                : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
+            }
+            {/*{report}*/}
           </div>
           
 
