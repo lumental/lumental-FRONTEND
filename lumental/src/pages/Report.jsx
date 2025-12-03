@@ -301,7 +301,7 @@ export default function Report() {
         <div
           style={{
             width: '100%',
-            height: 200,
+            height: 300,
             background: 'white',
             boxShadow: '0px 0px 20px rgba(95, 103, 255, 0.30)',
             borderRadius: 28,
@@ -310,7 +310,8 @@ export default function Report() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            marginBottom: 50
           }}
         >
           <div 
