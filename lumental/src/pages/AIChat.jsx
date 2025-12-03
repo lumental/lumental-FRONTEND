@@ -11,6 +11,13 @@ export default function AIChat() {
 
   const [message, setMessage] =useState("");
   const [chatList, setChatList] = useState([{sender: "bot", text: "오늘 하루는 어땠어?"}]);
+  const [name, setName] = useState("");
+    
+    useEffect(() => {;
+      const savedName = localStorage.getItem("name");
+      setName(savedName);
+    
+    }, []);
   
 
   useEffect(() => {
@@ -132,7 +139,7 @@ export default function AIChat() {
             marginLeft: 'auto'
           }}
         >
-          <div style={{fontSize: 24, marginLeft: 15 }}>불씨</div>
+          <div style={{fontSize: 24, marginLeft: 15 }}>{name}</div>
           <div>
             <button style={{cursor: 'pointer', background: 'none', border: 'none'}}>
               <FontAwesomeIcon icon={faBars} color='black' style={{ fontSize: "18px" }} />
