@@ -55,9 +55,16 @@ export default function OnboardingLogin() {
       </div>
 
       <div style={{display: 'flex', flexDirection: 'column', gap: 7}}>
-        <div><button onClick={handleFinishOnboarding} className='loginbutton' style={{width: '100%', height: 60, borderRadius: '20px', background: '#03C75A', borderColor: '#03C75A',}}><img  style={{width: 15, height: 15, boxSizing: 'content-box', marginRight: 7, }} src={naver}/><span style={{fontSize: 18, color: 'white'}}>네이버 로그인</span></button></div>
+        
         <div><button onClick={kakaologin} className='loginbutton' style={{width: '100%', height: 60, borderRadius: '20px', background: '#FEE500', borderColor: '#FEE500',}}><img  style={{width: 15, height: 15, boxSizing: 'content-box', marginRight: 7}} src={kakao}/><span style={{fontSize: 18, color: 'black'}}>카카오 로그인</span></button></div>
-        <div><button className='loginbutton' style={{width: '100%', height: 60, borderRadius: '20px', background: '#F8F8F8', borderColor: 'white',}}><img  style={{width: 15, height: 15, boxSizing: 'content-box', marginRight: 15}} src={google}/><span style={{fontSize: 18, color: '#313131'}}>구글 로그인</span></button></div> 
+        <div >
+              <button 
+              onClick= {handleFinishOnboarding}
+              className="Next"
+              >
+                  먼저 둘러보기
+              </button>
+          </div>
       </div>
 
       
