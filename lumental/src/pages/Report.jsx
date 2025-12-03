@@ -153,7 +153,7 @@ export default function Report() {
             style={{
                 color: '#FF6854', 
                 fontSize: '14px', 
-                marginBottom: "4px", 
+                
                 display: 'flex', 
                 alignItems: 'flex-start', 
                 justifyContent: 'flex-start', 
@@ -190,7 +190,7 @@ export default function Report() {
             style={{
                 color: '#FF6854', 
                 fontSize: '14px', 
-                marginBottom: "4px", 
+                
                 display: 'flex', 
                 alignItems: 'flex-start', 
                 justifyContent: 'flex-start', 
@@ -317,7 +317,7 @@ export default function Report() {
             style={{
               color: '#2C34C4', 
               fontSize: '14px', 
-              marginBottom: "4px", 
+               
               display: 'flex', 
               alignItems: 'flex-start', 
               justifyContent: 'flex-start', 
