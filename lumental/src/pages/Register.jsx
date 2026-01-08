@@ -119,7 +119,8 @@ const Register = () => {
         color: "#111",
         boxShadow: "0 10px 22px rgba(0,0,0,0.12)",
         marginBottom: 28,
-        flex: 1,                     
+        flex: 1,
+                           
     },
     primaryBtn: {
         width: "100%",
@@ -150,7 +151,7 @@ const Register = () => {
       marginBottom: 8,
     },
     input: {
-      width: "100%",
+      width: "90%",
       height: 44,
       borderRadius: 14,
       border: "1px solid rgba(0,0,0,0.10)",
