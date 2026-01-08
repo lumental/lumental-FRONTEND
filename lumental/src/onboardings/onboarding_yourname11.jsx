@@ -65,7 +65,7 @@ export default function OnboardingYourname() {
               name='name'
               className='name' 
               type='text' 
-              placeholder='이름을 입력해주세요.' 
+              placeholder='당신을 부를 이름을 입력해주세요.' 
               style={{background: 'none', border: 'none', height: 60, width: '100%'}} 
             />
         </div>

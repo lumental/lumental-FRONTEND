@@ -48,7 +48,7 @@ export default function OnboardingCharacter() {
               name='character'
               className='name' 
               type='text' 
-              placeholder='이름을 입력해주세요.' 
+              placeholder='이 아이의 이름을 입력해주세요.' 
               value={character}
               onChange={onChange}
               style={{background: 'none', border: 'none', height: 60, width: '100%'}} 
