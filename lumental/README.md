@@ -60,9 +60,9 @@ LUMENTAL
 
 ## .env 환경변수
 
--API 서버 주소: VITE_API_URL
--카카오톡 로그인 REST KEY: VITE_KAKAO_REST_KEY
--카카오톡 로그인 이후 REDIRECT 주소: VITE_KAKAO_REDIRECT
+- API 서버 주소: VITE_API_URL
+- 카카오톡 로그인 REST KEY: VITE_KAKAO_REST_KEY
+- 카카오톡 로그인 이후 REDIRECT 주소: VITE_KAKAO_REDIRECT
 
 
 ## 🚀 실행 방법
