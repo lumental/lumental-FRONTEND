@@ -1,19 +1,144 @@
-
 import EmotionButtons from '../components/EmotionButtons';
 import TodayCards from '../components/TodayCards';
 import flameImg from '../assets/flame.png';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react'; 
 import axios from 'axios';
 import Circle from '../charts/Circle';
 import dummy from '../charts/dummy.json';
 import HeartRateGraph from '../charts/Rate';
 import TinyBarChart from '../charts/Bar2';
+import { useNavigate } from 'react-router-dom';
 /* eslint-disable */
+
+
+function TutorialOverlay({ anchorRect, onClose, text }) {
+  if (!anchorRect) return null;
+
+  const bubbleWidth = 260;
+  const bubbleLeft = Math.max(
+    16,
+    Math.min(
+      anchorRect.left + anchorRect.width / 2 - bubbleWidth / 2,
+      window.innerWidth - bubbleWidth - 16
+    )
+  );
+  const bubbleTop = Math.min(anchorRect.bottom + 14, window.innerHeight - 140);
+
+  
+  const r = 28;
+
+  const overlayColor = "rgba(11, 11, 11, 0.55)";
+
+
+  const x = Math.max(0, anchorRect.left);
+  const y = Math.max(0, anchorRect.top);
+  const w = Math.min(window.innerWidth, anchorRect.right) - x;
+  const h = Math.min(window.innerHeight, anchorRect.bottom) - y;
+
+  
+  const maskId = "tutorial-mask";
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 9999 }}>
+      
+      <svg
+        width={window.innerWidth}
+        height={window.innerHeight}
+        style={{ position: "absolute", inset: 0 }}
+      >
+        <defs>
+          <mask id={maskId}>
+
+            <rect width="100%" height="100%" fill="white" />
+           
+            <rect x={x} y={y} width={w} height={h} rx={r} ry={r} fill="black" />
+          </mask>
+        </defs>
+
+      
+        <rect
+          width="100%"
+          height="100%"
+          fill={overlayColor}
+          mask={`url(#${maskId})`}
+        />
+      </svg>
+
+   
+      <div
+        style={{
+          position: "absolute",
+          left: x,
+          top: y,
+          width: w,
+          height: h,
+          borderRadius: r,
+          outline: "2px solid rgba(255,255,255,0.18)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+          pointerEvents: "none",
+        }}
+      />
+
+    
+      <div
+        style={{
+          position: "absolute",
+          left: bubbleLeft,
+          top: bubbleTop,
+          width: bubbleWidth,
+          background: "#FFFFFF",
+          borderRadius: 16,
+          padding: "14px 14px 12px",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.22)",
+        }}
+      >
+        <div style={{ fontSize: 14, fontWeight: 600, color: "#222", lineHeight: "24px" }}>
+          {text}
+        </div>
+
+        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 10 }}>
+          <button
+            onClick={onClose}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#FFAC19",
+              fontWeight: 700,
+              fontSize: 14,
+              padding: "6px 8px",
+            }}
+          >
+            확인
+          </button>
+        </div>
+
+        
+        <div
+          style={{
+            position: "absolute",
+            left: Math.max(
+              18,
+              Math.min(anchorRect.left + anchorRect.width / 2 - bubbleLeft - 8, bubbleWidth - 26)
+            ),
+            top: -8,
+            width: 16,
+            height: 16,
+            background: "#fff",
+            transform: "rotate(45deg)",
+            boxShadow: "-6px -6px 14px rgba(0,0,0,0.08)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+
 
 export default function Home() {
   function MoodCard() {
-      return (
+    return (
       <div
         style={{
           width: '100%',
@@ -26,12 +151,17 @@ export default function Home() {
           boxShadow: '0 12px 24px rgba(0,0,0,0.18)',
         }}
       ></div>
-      );
+    );
   }
 
   const [character, setCharacter] = useState("");
   const [name, setName] = useState("");
   const [id, setId] = useState("");
+
+  
+  const [showTutorial, setShowTutorial] = useState(false);
+  const flameAnchorRef = useRef(null);
+  const [anchorRect, setAnchorRect] = useState(null);
 
   useEffect(() => {
     const savedCharacter = localStorage.getItem("character");
@@ -41,6 +171,8 @@ export default function Home() {
     setName(savedName);
     setId(parseInt(savedUserId));
 
+    const already = localStorage.getItem("homeTutorialDone");
+    if (!already) setShowTutorial(true);
   }, []);
 
   const Navigate = useNavigate();
@@ -48,83 +180,126 @@ export default function Home() {
     Navigate('/aichat');
   };
 
+  
+  const closeTutorial = () => {
+    setShowTutorial(false);
+    localStorage.setItem("homeTutorialDone", "1");
+  };
+
+  
+  useEffect(() => {
+    if (!showTutorial) return;
+
+    const update = () => {
+      if (!flameAnchorRef.current) return;
+      const rect = flameAnchorRef.current.getBoundingClientRect();
+      setAnchorRect(rect);
+    };
+
+    update();
+    window.addEventListener('resize', update);
+    window.addEventListener('scroll', update, true);
+
+    return () => {
+      window.removeEventListener('resize', update);
+      window.removeEventListener('scroll', update, true);
+    };
+  }, [showTutorial]);
+
   useEffect(() => {
     const fetchData = () => {
       async () => {
         try {
           const api = import.meta.env.VITE_API_URL;
           const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
-          
-          console.log(res.data);
 
+          console.log(res.data);
         } catch (error) {
           alert("에러 발생");
         }
       }
     };
     fetchData();
-
   }, [id]);
-
 
   const getData = async () => {
     try {
       const api = import.meta.env.VITE_API_URL;
       const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
-      
-      console.log(res.data);
 
+      console.log(res.data);
     } catch (error) {
       alert("에러 발생");
     }
-    
   };
 
   const step = dummy.data.stepCount.total;
   const hrv_data = dummy.data.hrv.data;
   const rate_data = dummy.data.heartRate.data;
-    
-
-    
-  
-
 
   return (
     <main
       style={{
-        maxWidth: 430,        
-        margin: '0 auto',     
-        padding: '16px 16px 88px', 
-        borderLeft: '1px solid rgba(0,0,0,0.08)',  
+        maxWidth: 430,
+        margin: '0 auto',
+        padding: '16px 16px 88px',
+        borderLeft: '1px solid rgba(0,0,0,0.08)',
         borderRight: '1px solid rgba(0,0,0,0.08)',
+        position: 'relative', 
       }}
     >
+      
+      {showTutorial && (
+        <TutorialOverlay
+          anchorRect={anchorRect}
+          onClose={closeTutorial}
+          text={
+          <>
+            나를{" "}
+            <span style={{ color: "#FFAC19", fontWeight: 700 }}>
+              터치
+            </span>
+            하면 함께{" "}
+            <span style={{ color: "#FFAC19", fontWeight: 700 }}>
+              대화
+            </span>
+            할 수 있어!
+            <br />
+            아직 초기 단계라 대답이 느린 점 참고해줘!
+          </>
+          }
+        />
+      )}
+
       <section style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <h1 style={{ margin: 0, fontSize: 30, padding: 0, /*paddingLeft: 20*/ }}>안녕, {name}</h1>
-        <div style={{
-            margin:0, padding: 0, 
-            color: '#FFAC19', 
-            fontSize: 18, 
-            //fontFamily: 'Pretendard', 
-            fontWeight: '600', 
+        <h1 style={{ margin: 0, fontSize: 30, padding: 0 }}>안녕, {name}</h1>
+
+        <div
+          style={{
+            margin: 0,
+            padding: 0,
+            color: '#FFAC19',
+            fontSize: 18,
+            fontWeight: '600',
             wordWrap: 'break-word',
-            //paddingLeft: 20
             marginBottom: 0,
             paddingBottom: 0
-            }}>
-            오늘 기분은 어때?
+          }}
+        >
+          오늘 기분은 어때?
         </div>
 
         <EmotionButtons />
 
         <div
-        style={{
-        display: 'flex',
-        justifyContent: 'center', 
-        marginTop: '16px',        
-        }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '16px',
+          }}
         >
           <div
+            ref={flameAnchorRef}
             style={{
               width: '100%',
               height: 360,
@@ -132,8 +307,8 @@ export default function Home() {
               borderRadius: 28,
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'flex-start', 
-              padding: '16px 20px',         
+              justifyContent: 'flex-start',
+              padding: '16px 20px',
               boxSizing: 'border-box',
             }}
           >
@@ -142,7 +317,6 @@ export default function Home() {
                 alignSelf: 'flex-start',
                 color: 'white',
                 fontSize: 12,
-                //fontFamily: 'Pretendard',
                 fontWeight: 500,
                 lineHeight: '15.83px',
                 marginBottom: 8,
@@ -150,12 +324,12 @@ export default function Home() {
             >
               {character}
             </p>
+
             <p
               style={{
                 alignSelf: 'flex-start',
                 color: '#FFE99E',
                 fontSize: 16,
-                //fontFamily: 'Pretendard',
                 fontWeight: 500,
                 lineHeight: '21.11px',
                 wordWrap: 'break-word',
@@ -163,11 +337,24 @@ export default function Home() {
                 marginTop: 0
               }}
             >
-              오늘 하루는 어땠어? 
-            </p> 
+              오늘 하루는 어땠어?
+            </p>
 
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-              <button onClick={ToChat} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
+            {/* ✅ (수정) 불꽃 버튼을 감싸는 div에 ref만 추가 */}
+            <div
+              
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <button
+                onClick={() => {
+                  // 튜토리얼 중이면 “확인” 누르기 전에도 이동할지 말지 선택 가능
+                  // 원하시면 아래 두 줄 중 하나만 쓰세요.
+                  // 1) 누르면 튜토리얼 닫고 이동
+                  if (showTutorial) closeTutorial();
+                  ToChat();
+                }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+              >
                 <img
                   src={flameImg}
                   alt="불꽃캐릭터"
@@ -175,27 +362,27 @@ export default function Home() {
                     width: 180,
                     height: 251,
                     alignSelf: 'center',
-                    marginTop: 'auto', 
+                    marginTop: 'auto',
                     paddingTop: 10
                   }}
                 />
               </button>
             </div>
-    
-            
+
           </div>
         </div>
 
+        {/* 이하 원래 코드 그대로 */}
         <div>
-          <p 
-          style={{
-            color: '#363636', 
-            fontSize: 20, 
-            //fontFamily: 'Pretendard', 
-            fontWeight: '700', 
-            wordWrap: 'break-word', 
-            //marginLeft: 30
-            }}>오늘의 하루
+          <p
+            style={{
+              color: '#363636',
+              fontSize: 20,
+              fontWeight: '700',
+              wordWrap: 'break-word',
+            }}
+          >
+            오늘의 하루
           </p>
 
           <div
@@ -212,101 +399,86 @@ export default function Home() {
               style={{
                 display: 'flex',
                 flexDirection: 'row',
-                gap: '20px', 
+                gap: '20px',
                 width: '100%',
                 alignItems: 'center',
                 justifyContent: 'center'
               }}
             >
-              
+
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between', 
+                  justifyContent: 'space-between',
                   gap: '14px',
                   width: '45%',
                 }}
               >
                 <div
                   style={{
-                    //width: '170px',
                     width: '100%',
                     height: '102px',
                     background: 'white',
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
                     boxShadow: '0px 0px 10px rgba(255, 104, 84, 0.30)',
                     borderRadius: '23.4px',
-
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: 'column'
                   }}
                 >
-                  <div style={{color: '#828282', fontSize: '14px'}}>심박수</div>
+                  <div style={{ color: '#828282', fontSize: '14px' }}>심박수</div>
                   <HeartRateGraph data={rate_data} height={70} />
                 </div>
 
                 <div
                   style={{
-                    //width: '170px',
                     width: '100%',
                     height: '102px',
                     background: 'white',
                     border: '0.5px solid rgba(255, 104, 84, 0.30)',
                     boxShadow: '0px 0px 20px rgba(255, 104, 84, 0.15)',
                     borderRadius: '23.4px',
-
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: 'column',
-                    
                   }}
                 >
-                  <div style={{color: '#828282', fontSize: '14px', marginBottom: "4px",}}>HRV</div>
-                  <div style={{width: '95%',height: '60px', display: 'flex', justifyContent: 'center',}}>
+                  <div style={{ color: '#828282', fontSize: '14px', marginBottom: "4px" }}>HRV</div>
+                  <div style={{ width: '95%', height: '60px', display: 'flex', justifyContent: 'center' }}>
                     <TinyBarChart data={hrv_data} />
                   </div>
-                  
                 </div>
-
-
               </div>
 
-              
               <div
                 style={{
-                  //width: '170px',
                   width: '45%',
                   height: '220px',
                   background: 'white',
                   borderRadius: '21.92px',
                   border: '0.5px solid rgba(255, 178, 41, 0.30)',
-                  boxShadow: '0px 0px 10px rgba(255, 178, 41, 0.30)', 
-
+                  boxShadow: '0px 0px 10px rgba(255, 178, 41, 0.30)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexDirection: 'column'
                 }}
               >
-                <div style={{color: '#828282', fontSize: '14px'}}>걸음수</div>
+                <div style={{ color: '#828282', fontSize: '14px' }}>걸음수</div>
                 <div>
                   <Circle steps={step} />
                 </div>
-                <div style={{color: '#FFB229', fontSize: 18}}>{step}</div>
+                <div style={{ color: '#FFB229', fontSize: 18 }}>{step}</div>
               </div>
-
 
             </div>
           </div>
-          
-
         </div>
-        
-        
+
       </section>
     </main>
   );
