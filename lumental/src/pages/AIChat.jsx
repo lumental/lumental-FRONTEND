@@ -47,39 +47,49 @@ export default function AIChat() {
 
   const api = import.meta.env.VITE_API_URL;
 
-  const postChatMessage = async () => {
-
+  const postChatMessage = async (messageToSend) => {
     try {
       const res = await axios.post(`${api}/api/chat/message`, {
-        "userId": userId,
-        "message": message
+        userId: userId,
+        message: messageToSend,
       });
 
-      console.log(res.status);
-      console.log(message);
+      const replyText = res.data?.data?.reply ?? "";
+      const cards = res.data?.data?.recommendedCards ?? [];
 
-      const botMessage = {
-        sender: 'bot',
-        text: res.data.data.reply,
-        cards: res.data.data.recommendedCards || []
+      // 1) 일반 답장 메시지
+      const botReplyMessage = {
+        sender: "bot",
+        text: replyText,
+        type: "reply",
+      };
+
+      // 2) 솔루션(카드) 메시지 - 카드가 있을 때만 별도 메시지로 추가
+      const botCardsMessage =
+        Array.isArray(cards) && cards.length > 0
+          ? {
+              sender: "bot",
+              text: "",          // 필요하면 "아래 카드 중 하나를 골라보세요" 같은 문구 넣어도 됨
+              type: "cards",
+              cards: cards,
+            }
+          : null;
+
+      setChatList((prev) => [
+        ...prev,
+        botReplyMessage,
+        ...(botCardsMessage ? [botCardsMessage] : []),
+      ]);
+
+      // 원래 하시던 localStorage 저장도 유지
+      if (Array.isArray(cards) && cards.length > 0) {
+        localStorage.setItem("recommendedCards", JSON.stringify(cards));
       }
-      console.log(res.data);
-      console.log(res.data.data.reply);
-      setChatList((prev) => [...prev, botMessage]);
-
-      if (res.data.data.recommendedCards) {
-        localStorage.setItem(
-          "recommendedCards",
-          JSON.stringify(res.data.data.recommendedCards)
-        );
-      }
-      
-
     } catch (error) {
       console.error("POST 에러: ", error);
     }
-    
   };
+
 
   /*const getChatMessage = async () => {
     try {
@@ -102,17 +112,17 @@ export default function AIChat() {
   };*/
 
   const onClick = async () => {
+    const messageToSend = message;
+
     const myMessage = {
       sender: "me",
-      text: message
-    }
+      text: messageToSend,
+    };
     setChatList((prev) => [...prev, myMessage]);
 
-    await postChatMessage();
-    //await getChatMessage();
+    await postChatMessage(messageToSend);
 
     setMessage("");
-    
   };
 
   return (
@@ -171,20 +181,21 @@ export default function AIChat() {
                   borderRadius: 12,
                   maxWidth: "70%",
                   color: msg.sender === "me" ? "white" : "#4E4E4F",
-                  backgroundColor:
-                  msg.sender === "me" ? "#468AF0" : "#FFFFFF80",
+                  backgroundColor: msg.sender === "me" ? "#468AF0" : "#FFFFFF80",
                   boxShadow: "1px 1px 6px rgba(130, 130, 130, 0.20)",
                 }}
               >
-                {msg.text}
-                {Array.isArray(msg.cards) && msg.cards.length > 0 && (
-                  <div>
+                {/* reply 메시지면 텍스트 출력 */}
+                {msg.type !== "cards" && msg.text}
+
+                {/* cards 메시지면 카드만 출력 */}
+                {msg.type === "cards" && Array.isArray(msg.cards) && msg.cards.length > 0 && (
+                  <div style={{ lineHeight: 1.6 }}>
                     {msg.cards.map((card, i) => (
-                      <div key={i}>{card.title}</div>
+                      <div key={i}>- {card.title}</div>
                     ))}
                   </div>
                 )}
-
               </div>
             </div>
           ))}
