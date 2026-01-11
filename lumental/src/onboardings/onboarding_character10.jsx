@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import flame from '../assets/flame.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 export default function OnboardingCharacter() {
@@ -12,6 +13,51 @@ export default function OnboardingCharacter() {
     
     navigate("/onboarding_yourname11");
     };
+
+    useEffect(() => {
+          const code = new URL(window.location.href).searchParams.get("code");
+    
+          if (!code) return;
+    
+          const getKakaoAccessToken = async () => {
+            try {
+              const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_KEY;
+              const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT;
+              
+              const params = new URLSearchParams();
+              params.append("grant_type", "authorization_code");
+              params.append("client_id", REST_API_KEY);
+              params.append("redirect_uri", REDIRECT_URI);
+              params.append("code", code);
+    
+              const response = await axios.post(
+                "https://kauth.kakao.com/oauth/token", 
+                params,
+                
+                {
+                  headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                  },
+                }
+              );
+    
+              const accessToken = response.data.access_token;
+              console.log("카카오 Access Token:", accessToken);
+    
+              const api = import.meta.env.VITE_API_URL;
+              await axios.post(`${api}/auth/login/social`, {
+                provider: "kakao",
+                token: accessToken,
+              });
+    
+            } catch (error) {
+              console.error("카카오 로그인 처리 중 오류:", error);
+            }
+          };
+    
+          getKakaoAccessToken();
+        }, []);
+
 
     const [character, setCharacter] = useState("");
 

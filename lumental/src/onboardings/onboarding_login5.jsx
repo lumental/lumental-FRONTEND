@@ -14,7 +14,7 @@ export default function OnboardingLogin() {
     // 로컬 스토리지에 '봤음' 표시
     localStorage.setItem("hasSeenOnboarding", "true");
     
-    navigate("/onboarding_calendar8");
+    navigate("/onboarding_character10");
     };
 
     const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_KEY;
