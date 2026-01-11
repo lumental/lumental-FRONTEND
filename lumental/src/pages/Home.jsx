@@ -74,7 +74,7 @@ function TutorialOverlay({ anchorRect, onClose, text }) {
           height: h,
           borderRadius: r,
           outline: "2px solid rgba(255,255,255,0.18)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+          boxShadow: "0 10px 30px rgba(9, 9, 9, 0.25)",
           pointerEvents: "none",
         }}
       />
