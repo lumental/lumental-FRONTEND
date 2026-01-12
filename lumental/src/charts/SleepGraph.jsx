@@ -46,7 +46,6 @@ export default function SleepGraph({
   return (
     <div ref={containerRef} style={{ width: width }}>
       <svg width={realWidth} height={height}>
-        {/* ✔ 세로 회색선 추가 */}
         {data.map((_, idx) => {
           const x = idx * gapX;
           return (
