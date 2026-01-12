@@ -43,6 +43,11 @@ export default function Report() {
     setHrvData(getData?.hrv?.data ?? []); 
     setReport(getData?.llm?.summaryAdvice ?? "");   
 
+    const advice = getData?.llm?.summaryAdvice;
+    console.log("summaryAdvice:", advice);
+    console.log("typeof summaryAdvice:", typeof advice);
+    console.log("isArray:", Array.isArray(advice));
+
 
     /*setSleep(getData?.sleep?.segments ?? []);
 
