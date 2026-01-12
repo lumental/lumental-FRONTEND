@@ -164,7 +164,7 @@ export default function Report() {
                 justifyContent: 'flex-start', 
                 width: '100%',
                 marginLeft: 20,
-                marginBottom: 10
+                marginBottom: 20
             }}
           >
             오늘의 심박수
@@ -200,15 +200,14 @@ export default function Report() {
             style={{
                 color: '#FF6854', 
                 fontSize: '14px', 
-                
                 display: 'flex', 
                 alignItems: 'flex-start', 
                 justifyContent: 'flex-start', 
                 width: '100%',
                 marginLeft: 20,
-                marginBottom: 10
+                marginBottom: 20
             }}
-          >HRV
+          >평균 HRV
           </div>
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               {/*<Rate data={hrvData} />*/}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-//리포트 페이지 심박수, hrv
+
 
 export default function SleepGraph({
   data,
