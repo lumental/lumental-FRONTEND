@@ -3,7 +3,7 @@ import { Line, LineChart, CartesianGrid, YAxis, ResponsiveContainer } from 'rech
 export default function Rate({ data }) {
   return (
     // 2. ResponsiveContainer로 감싸고 width, height를 100%로 설정
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="90%" height="100%">
       <LineChart
         data={data}
         // 3. margin 설정 (핵심!: left를 -20 정도로 주어 왼쪽으로 당김, right는 잘리지 않게 여유 둠)
