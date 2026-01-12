@@ -2,23 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function HeartRateGraph({
   data,
-  width = "90%",   // 숫자 or 퍼센트 모두 허용
+  width = "90%",  
   height = 70,
   padding = 10,
 }) {
   const containerRef = useRef(null);
   const [realWidth, setRealWidth] = useState(
-    typeof width === "number" ? width : 200 // 초기값
+    typeof width === "number" ? width : 200 
   );
 
-  // width가 % 문자열인 경우 → 부모 요소 크기 측정
+ 
   useEffect(() => {
     if (typeof width === "number") {
       setRealWidth(width);
       return;
     }
 
-    // width="100%" 같은 경우
+  
     const observer = new ResizeObserver(() => {
       if (!containerRef.current) return;
       const parentWidth = containerRef.current.getBoundingClientRect().width;

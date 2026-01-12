@@ -6,7 +6,7 @@ import { Line, LineChart, CartesianGrid, YAxis } from 'recharts';
 export default function Rate({data}) {
   return (
     <LineChart
-      style={{ width: '100%', maxWidth: '300px', maxHeight: '150px', aspectRatio: 1.618 }}
+      style={{ width: '100%',  maxHeight: '150px', aspectRatio: 1.618 }}
       responsive
       data={data}
     >
@@ -16,7 +16,7 @@ export default function Rate({data}) {
         vertical={false}
       />
 
-      {/* ✔ 사진처럼 Y축 숫자(50, 80, 110, 140 …) 표시 */}
+  
       <YAxis
         domain={['dataMin - 5', 'dataMax + 5']}
         tick={{ fontSize: 10, fill: '#999' }}
