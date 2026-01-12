@@ -212,10 +212,9 @@ export default function Report() {
           </div>
           <div style={{width: '100%',height: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               {/*<Rate data={hrvData} />*/}
-              {
-                hrvData?.length > 0 
-                  ? <p style={{ margin: 0, whiteSpace: "pre-wrap" }}>{report}</p>
-                  : <p>데이터가 부족해 분석을 제공할 수 없어요.</p>
+                {hrvData?.length > 0
+                ? <p>산소 데이터(SpO2)를 준비 중이에요.</p>
+                : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
               }
           </div>
           
