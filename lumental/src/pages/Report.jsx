@@ -262,8 +262,7 @@ export default function Report() {
             style={{
                 color: '#FFAC19', 
                 fontSize: '14px', 
-                marginBottom: "10px", 
-                
+                marginBottom: "20px", 
                 width: '100%',
                 marginLeft: 20,
                 
@@ -344,12 +343,12 @@ export default function Report() {
               width: '100%',
               marginLeft: 20,
               marginTop: 20,
-              marginBottom: 10
+              marginBottom: 20
             }}
           >
             생체 리포트 분석
           </div>
-          <div style={{width: '90%', letterSpacing: "1.4px", fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{width: '90%', letterSpacing: "1.4px", fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1.6}}>
             
             {
               hrvData?.length > 0 

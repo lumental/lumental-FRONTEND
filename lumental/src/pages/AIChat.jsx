@@ -57,19 +57,17 @@ export default function AIChat() {
       const replyText = res.data?.data?.reply ?? "";
       const cards = res.data?.data?.recommendedCards ?? [];
 
-      // 1) 일반 답장 메시지
       const botReplyMessage = {
         sender: "bot",
         text: replyText,
         type: "reply",
       };
 
-      // 2) 솔루션(카드) 메시지 - 카드가 있을 때만 별도 메시지로 추가
       const botCardsMessage =
         Array.isArray(cards) && cards.length > 0
           ? {
               sender: "bot",
-              text: "",          // 필요하면 "아래 카드 중 하나를 골라보세요" 같은 문구 넣어도 됨
+              text: "",         
               type: "cards",
               cards: cards,
             }
@@ -81,7 +79,6 @@ export default function AIChat() {
         ...(botCardsMessage ? [botCardsMessage] : []),
       ]);
 
-      // 원래 하시던 localStorage 저장도 유지
       if (Array.isArray(cards) && cards.length > 0) {
         localStorage.setItem("recommendedCards", JSON.stringify(cards));
       }
@@ -185,10 +182,9 @@ export default function AIChat() {
                   boxShadow: "1px 1px 6px rgba(130, 130, 130, 0.20)",
                 }}
               >
-                {/* reply 메시지면 텍스트 출력 */}
+
                 {msg.type !== "cards" && msg.text}
 
-                {/* cards 메시지면 카드만 출력 */}
                 {msg.type === "cards" && Array.isArray(msg.cards) && msg.cards.length > 0 && (
                   <div style={{ lineHeight: 1.6 }}>
                     {msg.cards.map((card, i) => (
