@@ -340,16 +340,14 @@ export default function Home() {
               오늘 하루는 어땠어?
             </p>
 
-            {/* ✅ (수정) 불꽃 버튼을 감싸는 div에 ref만 추가 */}
+  
             <div
               
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
               <button
                 onClick={() => {
-                  // 튜토리얼 중이면 “확인” 누르기 전에도 이동할지 말지 선택 가능
-                  // 원하시면 아래 두 줄 중 하나만 쓰세요.
-                  // 1) 누르면 튜토리얼 닫고 이동
+
                   if (showTutorial) closeTutorial();
                   ToChat();
                 }}
@@ -372,7 +370,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 이하 원래 코드 그대로 */}
+      
         <div>
           <p
             style={{
@@ -472,7 +470,6 @@ export default function Home() {
                 <div>
                   <Circle steps={step} />
                 </div>
-                <div style={{ color: '#FFB229', fontSize: 18 }}>{step}</div>
               </div>
 
             </div>

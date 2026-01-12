@@ -5,11 +5,11 @@
   background: #f6f7f9;
 }
 
-/* 430px 폰 프레임 */
+
 .app-container {
   width: 100%;
-  max-width: 430px;        /* 핵심 */
-  min-height: 100dvh;      /* sticky 기준 컨테이너 */
+  max-width: 430px;       
+  min-height: 100dvh;     
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -18,14 +18,14 @@
   overflow: hidden;
 }
 
-/* 스크롤 영역(콘텐츠); 바텀탭 높이만큼 하단 패딩 */
+
 .app-content {
   flex: 1;
   overflow: auto;
   padding: 16px 16px 88px;
 }
 
-/* 반응형(큰 화면에서만 430 제한을 명시적으로 보장하고 싶다면 유지) */
+
 @media (min-width: 431px) {
   .app-container { max-width: 430px; }
   .bottom-nav   { max-width: 430px; }
@@ -40,9 +40,9 @@
   }
 }
 
-/* 네비바 (프레임 내부 sticky) */
+
 .bottom-nav {
-  position: sticky;      /* 프레임(app-container) 안에서 하단 고정 */
+  position: sticky;      
   bottom: 0;
   background: #fff;
   border-top: 1px solid #eee;
