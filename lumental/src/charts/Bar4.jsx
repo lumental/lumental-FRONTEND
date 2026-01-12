@@ -7,14 +7,14 @@ const TinyBarChart2 = ({ data }) => {
       responsive
       data={data}
     >
-      {/* ✔ 사진처럼 회색 가로선만 표시 (세로선 없음) */}
+      
       <CartesianGrid
         stroke="#ccc"
         strokeDasharray="0"
         vertical={false}
       />
 
-      {/* ✔ 사진처럼 Y축 숫자(50, 80, 110, 140 …) 표시 */}
+      
       <YAxis
         domain={['dataMin - 5', 'dataMax + 5']}
         tick={{ fontSize: 10, fill: '#999' }}

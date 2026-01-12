@@ -36,7 +36,7 @@ export default function Report() {
 
     const getData = JSON.parse(raw);
     console.log("parsed:", getData);
-//localStorage.setItem("healthSummary", JSON.stringify(res.data));
+    //localStorage.setItem("healthSummary", JSON.stringify(res.data));
     //setHrvData(getData?.hrv?.data ?? []);
     setHeartRate(getData?.heartRate?.data ?? []);
     setStepData(getData?.steps?.data ?? []);
@@ -209,8 +209,8 @@ export default function Report() {
               {/*<Rate data={hrvData} />*/}
               {
                 hrvData?.length > 0 
-                  ? <Rate data={hrvData} />
-                  : <p>데이터가 부족해 그래프를 제공할 수 없어요.</p>
+                  ? <p style={{ margin: 0, whiteSpace: "pre-wrap" }}>{report}</p>
+                  : <p>데이터가 부족해 분석을 제공할 수 없어요.</p>
               }
           </div>
           
