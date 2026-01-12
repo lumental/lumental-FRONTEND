@@ -353,7 +353,7 @@ export default function Report() {
             
             {
               hrvData?.length > 0 
-                ? {report}
+                ? report
                 : <p>데이터가 부족해 분석을 제공할 수 없어요.</p>
             }
             {/*{report}*/}
