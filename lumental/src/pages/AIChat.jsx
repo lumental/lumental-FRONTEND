@@ -4,7 +4,6 @@ import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { faCirclePlus, faBars } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-/* eslint-disable */
 
 
 export default function AIChat() {

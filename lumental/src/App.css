@@ -42,40 +42,27 @@
 
 
 .bottom-nav {
-  /* [위치 설정] 화면 중앙 하단 고정 */
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-
-  /* [크기 설정] 핵심: box-sizing을 넣어 padding이나 테두리가 너비에 포함되도록 함 */
-  width: 100%;
   max-width: 430px; 
   height: 64px;
-  box-sizing: border-box; /* 이게 없으면 padding 때문에 너비가 미세하게 달라질 수 있음 */
-
-  /* [디자인] */
+  box-sizing: border-box; 
   background: #fff;
   border-top: 1px solid #eee;
-  /* 부모 컨테이너와 똑같이 맞추려면 양옆 보더도 추가하는 게 좋습니다 (선택사항) */
-  /* border-left: 1px solid rgba(0,0,0,0.08); */
-  /* border-right: 1px solid rgba(0,0,0,0.08); */
-  border-bottom-left-radius: 16px; /* 둥근 모서리 맞춤 */
+  border-bottom-left-radius: 16px; 
   border-bottom-right-radius: 16px;
-
-  /* [내부 아이템 정렬] */
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 메뉴 5개 등분 */
+  grid-template-columns: repeat(5, 1fr); 
   align-items: center;
   gap: 4px;
-  
-  /* [여백] 아이폰 하단 바(Safe Area) 대응 */
   padding: 6px 4px;
   padding-bottom: calc(6px + env(safe-area-inset-bottom)); 
 }
 
-/* 기존 네비게이션 링크 스타일 유지 */
+
 .bottom-nav a {
   text-decoration: none;
   color: #666;
@@ -204,11 +191,11 @@
 .name {
   text-align: center;
   color: #F8F8F8;
-  font-size: 18px; /* 입력 텍스트 색 */
+  font-size: 18px; 
 }
 
 .name::placeholder {
-  color:  #F8F8F8; /* placeholder 색 */
+  color:  #F8F8F8; 
   font-size: 18px;
   text-align: center;
 }

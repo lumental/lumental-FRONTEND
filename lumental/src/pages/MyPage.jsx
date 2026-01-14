@@ -4,7 +4,7 @@ import { faFile, faHeadphones } from '@fortawesome/free-regular-svg-icons';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-/* eslint-disable no-unused-vars */
+
 
 
 
@@ -29,7 +29,7 @@ export default function MyPage() {
   const profilePreview = localStorage.getItem("profileImage");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const onClick = () => {setIsModalOpen(true)};
+  //const onClick = () => {setIsModalOpen(true)};
   const [modalType, setModalType] = useState(null);
 
   const openModal = (type) => {
@@ -231,7 +231,7 @@ export default function MyPage() {
                 <>
                   Lumental 인스타그램 팔로우 & 좋아요!
                   <br />
-                  • Lumental Instagram: 
+                  • UNIS Instagram: @unis_ewha
                 </>
               )}
 

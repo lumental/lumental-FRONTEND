@@ -122,7 +122,7 @@ function TutorialOverlay({
           </button>
         </div>
 
-        {/* ✅ 꼬리 (top/bottom에 따라 방향 바꾸기) */}
+
         <div
           style={{
             position: "absolute",
@@ -135,12 +135,12 @@ function TutorialOverlay({
             ),
             ...(bubblePlacement === "top"
               ? {
-                  bottom: -8, // 아래로 꼬리
+                  bottom: -8, 
                   top: "auto",
                   boxShadow: "6px 6px 14px rgba(0,0,0,0.08)",
                 }
               : {
-                  top: -8, // 위로 꼬리
+                  top: -8, 
                   bottom: "auto",
                   boxShadow: "-6px -6px 14px rgba(0,0,0,0.08)",
                 }),
@@ -215,15 +215,13 @@ export default function CheckList() {
     }));
   }, []);
 
-  /* ===========================
-     ✅ 튜토리얼: 최소 수정 추가분
-     =========================== */
+
   const [showTutorial, setShowTutorial] = useState(false);
   const [tutorialStep, setTutorialStep] = useState(0);
   const [anchorRect, setAnchorRect] = useState(null);
 
-  const progressRef = useRef(null); // GaugeBar/Stairs 영역
-  const checklistRef = useRef(null); // '오늘의 도전' 하얀 박스
+  const progressRef = useRef(null); 
+  const checklistRef = useRef(null); 
 
   useEffect(() => {
     const done = localStorage.getItem("checklistTutorialDone");
@@ -233,7 +231,7 @@ export default function CheckList() {
     }
   }, []);
 
-  // step에 따라 어떤 ref를 하이라이트할지 결정
+ 
   const getCurrentRef = () => {
     if (tutorialStep === 0) return checklistRef;
     return progressRef;
@@ -259,12 +257,12 @@ export default function CheckList() {
   }, [showTutorial, tutorialStep]);
 
   const nextTutorial = () => {
-    // 0 -> 1로 넘어가기
+
     if (tutorialStep === 0) {
       setTutorialStep(1);
       return;
     }
-    // 마지막 단계 종료
+
     setShowTutorial(false);
     localStorage.setItem("checklistTutorialDone", "1");
   };

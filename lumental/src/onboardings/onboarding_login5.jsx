@@ -1,17 +1,14 @@
-/* eslint-disable no-unused-vars */
+
 import { useNavigate } from 'react-router-dom';
 import loginlogo from '../assets/loginlogo.png';
-import naver from '../assets/네이버.png';
 import kakao from '../assets/카카오.png';
-import google from '../assets/구글.png';
-
 
 
 export default function OnboardingLogin() {
     const navigate = useNavigate();
 
     const handleFinishOnboarding = () => {
-    // 로컬 스토리지에 '봤음' 표시
+ 
     localStorage.setItem("hasSeenOnboarding", "true");
     
     navigate("/onboarding_character10");

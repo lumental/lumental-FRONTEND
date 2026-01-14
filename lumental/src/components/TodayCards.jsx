@@ -26,10 +26,9 @@ export default function TodayCards() {
         const actRes = await axios.get("/report/activity");
 
         setHrData({
-          avgHR: hrRes.data.avgHR, // 85처럼 숫자
+          avgHR: hrRes.data.avgHR, 
         });
 
-        // HRV 그래프용 가짜 데이터 생성 (API에는 단일 값만 있으므로)
         const hrvValue = hrRes.data.hrv;
         setHrvData(
           Array.from({ length: 12 }).map((_, i) => ({
@@ -38,7 +37,7 @@ export default function TodayCards() {
           }))
         );
 
-        // 걸음수 API
+    
         setActivityData({
           steps: actRes.data.steps,
         });
@@ -60,7 +59,7 @@ export default function TodayCards() {
         alignItems: "center",
       }}
     >
-      {/* ----- 왼쪽 두 상자 ----- */}
+   
       <div
         style={{
           width: "45%",
@@ -69,7 +68,7 @@ export default function TodayCards() {
           gap: 14,
         }}
       >
-        {/* ❤️ 심박수 카드 */}
+
         <div
           style={{
             background: "white",
@@ -98,7 +97,7 @@ export default function TodayCards() {
           )}
         </div>
 
-        {/* HRV 카드 */}
+
         <div
           style={{
             background: "white",
@@ -123,7 +122,7 @@ export default function TodayCards() {
         </div>
       </div>
 
-      {/* ----- 오른쪽 큰 카드: 걸음수 ----- */}
+   
       <div
         style={{
           width: "45%",

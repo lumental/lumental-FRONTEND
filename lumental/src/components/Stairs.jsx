@@ -8,7 +8,7 @@ for (let i = 1; i < 30; i++) {
   days.push({day: i, isActive: false});
 }
 
-// 개별 스텝 아이템 컴포넌트
+
 const StepItem = ({ day, isActive }) => {
   return (
   <div className="day-label">Day{day}</div>
@@ -16,7 +16,7 @@ const StepItem = ({ day, isActive }) => {
   );
 };
 
-// 전체 스텝 컨테이너 컴포넌트
+
 const Stairs = ({ isCleared }) => {
 
   if(isCleared){

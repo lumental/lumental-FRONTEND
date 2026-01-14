@@ -39,4 +39,3 @@ export default function EmotionButtons() {
     </div>
   );
 }
-//이제 여기서 감정 버튼이 눌리면 그 정보가 저장되도록 전달해야함!!! ㅠㅠㅠ

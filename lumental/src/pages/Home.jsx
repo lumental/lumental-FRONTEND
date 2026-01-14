@@ -8,7 +8,7 @@ import dummy from '../charts/dummy.json';
 import HeartRateGraph from '../charts/Rate';
 import TinyBarChart from '../charts/Bar2';
 import { useNavigate } from 'react-router-dom';
-/* eslint-disable */
+
 
 
 function TutorialOverlay({ anchorRect, onClose, text }) {
@@ -215,23 +215,23 @@ export default function Home() {
 
           console.log(res.data);
         } catch (error) {
-          alert("에러 발생");
+          console.error("에러: ", error);
         }
       }
     };
     fetchData();
   }, [id]);
 
-  const getData = async () => {
+  /*const getData = async () => {
     try {
       const api = import.meta.env.VITE_API_URL;
       const res = await axios.get(`${api}/api/biometric/report/${id}/latest`);
 
       console.log(res.data);
     } catch (error) {
-      alert("에러 발생");
+      console.error("에러: ", error);
     }
-  };
+  };*/
 
   const step = dummy.data.stepCount.total;
   const hrv_data = dummy.data.hrv.data;

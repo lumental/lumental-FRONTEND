@@ -1,17 +1,15 @@
-/* 전체 컨테이너: Flexbox로 가로 배열 */
 .steps-container {
-  position: relative;    /* 계단 기준점 */
+  position: relative;    
   width: 100%;
-  height: 300px;         /* 계단 전체 높이 */
-  overflow: hidden;      /* 영역 밖 잘라내기 */
+  height: 300px;         
+  overflow: hidden;     
   background: none;
   
 }
 
-/* 개별 스텝 아이템 */
+
 .step-item {
   position: absolute;
-  /* 계단 모양을 만들기 위한 높이 조정 */
   height: 50px; 
 }
 
@@ -37,11 +35,9 @@
 .flame-img {
   position: absolute;
   
-  width: 70px; /* 이미지 너비 */
-  height: 70px; /* 이미지 높이 */
-  
-  /* Day Label 위에 중앙 정렬 및 위치 조정 */
-  bottom: 140px; /* day-label의 높이(35px)만큼 위로 올림 */
+  width: 70px; 
+  height: 70px; 
+  bottom: 140px; 
   right: 90px;
   transition: opacity 0.9s ease-in-out;
 }
@@ -49,13 +45,3 @@
 .flame-img.hide {
   opacity: 0;
 }
-
-
-
-/* Day 8, 9, 10, ...에 따라 다른 높이 설정 (계단 모양을 위해) */
-/* 이 부분은 데이터 기반으로 높이를 동적으로 계산하는 것이 더 좋지만, 
-   CSS에서 간단히 구현하려면 다음과 같이 명시적으로 설정할 수 있습니다. 
-.steps-container > .step-item:nth-child(1) { height: 30px; } 
-.steps-container > .step-item:nth-child(2) { height: 50px; } /* 활성 스텝 (높이 50px) 
-.steps-container > .step-item:nth-child(3) { height: 70px; }
-.steps-container > .step-item:nth-child(4) { height: 90px; }*/

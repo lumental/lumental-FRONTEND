@@ -6,8 +6,6 @@ export default function OnboardingReport() {
     const navigate = useNavigate();
 
     const handleFinishOnboarding = () => {
-    // 로컬 스토리지에 '봤음' 표시
-    //힝 왜 안되지
     localStorage.setItem("hasSeenOnboarding", "true");
     
     navigate("/onboarding_solution3");

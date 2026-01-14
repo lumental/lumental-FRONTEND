@@ -1,15 +1,14 @@
-//import watch from '../assets/온보딩_워치연동.png';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import flame from '../assets/3단계 귀요미.png';
-/* eslint-disable */
+
 
 export default function OnboardingWearable() {
     const navigate = useNavigate();
 
     const handleFinishOnboarding = () => {
-    // 로컬 스토리지에 '봤음' 표시
+   
     localStorage.setItem("hasSeenOnboarding", "true");
     
     navigate("/home");
@@ -33,13 +32,13 @@ export default function OnboardingWearable() {
 
     }, []);
 
-    const getTodayDate = () => {
+    /*const getTodayDate = () => {
       const now = new Date();
       const y = now.getFullYear();
       const m = String(now.getMonth() + 1).padStart(2, "0");
       const d = String(now.getDate()).padStart(2, "0");
       return `${y}-${m}-${d}`;
-    };
+    };*/
 
     const api = import.meta.env.VITE_API_URL;
 

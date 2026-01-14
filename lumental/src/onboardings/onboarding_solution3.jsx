@@ -6,9 +6,8 @@ export default function OnboardingSolution() {
     const navigate = useNavigate();
 
     const handleFinishOnboarding = () => {
-    // 로컬 스토리지에 '봤음' 표시
+ 
     localStorage.setItem("hasSeenOnboarding", "true");
-    // 홈으로 이동
     navigate("/onboarding_chatlist4");
   };
 

@@ -32,7 +32,7 @@ export default function Report() {
     
     console.log("raw:", raw);
 
-    if (!raw) return; // 저장된 데이터가 없으면 바로 종료
+    if (!raw) return; 
 
     const getData = JSON.parse(raw);
     console.log("parsed:", getData);

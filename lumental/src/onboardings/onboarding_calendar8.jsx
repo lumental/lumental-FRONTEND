@@ -7,7 +7,7 @@ export default function OnboardingCalendar() {
     const navigate = useNavigate();
 
     const handleFinishOnboarding = () => {
-    // 로컬 스토리지에 '봤음' 표시
+      
     localStorage.setItem("hasSeenOnboarding", "true");
 
     navigate("/onboarding_character10");
