@@ -44,8 +44,7 @@ export default function MyPage() {
 
 
   return (
-    <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px', borderLeft: '1px solid rgba(0,0,0,0.08)',
-    borderRight: '1px solid rgba(0,0,0,0.08)',  }}>
+    <main style={{ maxWidth: 430, margin: '0 auto', padding: '16px 16px 88px'  }}>
 
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-between",}}>
         <p
